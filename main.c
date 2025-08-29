@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/08/29 15:19:51 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/08/29 16:18:03 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int main(int ac, char **av)
         return (1);//free data
     // open_read(data, av[1]);
     print_parsed_header(data);
+    start();
     return (0);
 }
