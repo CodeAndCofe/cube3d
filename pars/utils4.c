@@ -1,25 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex_cub.h                                           :+:      :+:    :+:   */
+/*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 15:58:45 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/03 17:57:49 by zyahansa         ###   ########.fr       */
+/*   Created: 2025/08/31 17:52:31 by zyahansa          #+#    #+#             */
+/*   Updated: 2025/09/03 18:15:23 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef EX_CUB_H
-#define EX_CUB_H
 #include "cub.h"
 
-typedef struct s_mlx
-{
-    void    *mlx;
-    void    *win_mlx;  
-}t_mlx;
-    
-void    add_temporary_map(t_data    *data);
-#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 11:16:30 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/08/29 16:18:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/03 17:58:39 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ typedef struct s_found
 typedef struct s_data
 {
     char **maps;
+    int map_start;
+    int map_lines;
+    int map_index;
     char *no_path;
     char *so_path;
     char *we_path;
@@ -58,16 +61,16 @@ typedef struct s_data
     int start_pos_y;
     int palyer_direction;
     struct s_found  found;
-}t_data;
+}   t_data;
 
 
 int main(int ac, char **av);
-int open_read(t_data *data, char *file_name);
+int open_read(t_data *data, char *file_name, int flag);
 int check_file(char *line);
 int pars_line(char *line, t_data *data);
 int store_data(int type, t_data *data, char *path);
 int is_valid_extension(char *path, char *name);
-int get_type(char *line);
+int get_type(char *line, t_data *data);
 void remove_newline(char *line);
 int print_error(void);
 
@@ -77,8 +80,14 @@ int convert_to_rgb(char *color);
 int count_word(char **holder);
 void init_data(t_data *data);
 int parsing_part(t_data *data, char *file_name);
-
-
+int valid_file(t_data *data);
+int pars_map(char *line, t_data *data);
+int pars_line_helper(char *line, int *type, char **path, t_data *data);
+int valid_map(t_data *data);
+int valid_chars(char *line, int *player, int flag);
+int all_walls(char *line);
+int map_closed(t_data *data);
+int check_num(char *num);
 
 void print_parsed_header(t_data *data);
 
@@ -109,16 +118,7 @@ char			*ft_itoa(int n);
 
 
 
-
-
-
+////////////////////////////////ray///////////////////////////////
 void    start();
-
-
-
-
-
-
-
 
 #endif
