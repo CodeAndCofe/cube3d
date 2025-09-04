@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:03 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/08/29 15:25:15 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/02 13:58:53 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,51 +20,58 @@ int store_data(int type, t_data *data, char *path)
         
     if (type == 2) // NO
     {
-        
         if (data->found.found_no == 1)
             return(1);
         data->found.found_no = 1;
         data->no_path = ft_strdup(path);
+        if (!data->no_path)
+            return (1);
     }
     else if (type == 3) // SO
-    {
-        
+    {   
+
         if (data->found.found_so == 1)
             return(1);
         data->found.found_so = 1;
         data->so_path = ft_strdup(path);
+        if (!data->so_path)
+            return (1);
     }
     else if (type == 4) //we
-    {
-        
+    {    
         if (data->found.found_we == 1)
             return(1);
         data->found.found_we = 1;
         data->we_path = ft_strdup(path);
+        if (!data->we_path)
+            return (1);
     }
     else if (type == 5) // EA
-    {
-        
+    {   
         if (data->found.found_ea == 1)
             return(1);
         data->found.found_ea = 1;
         data->ea_path = ft_strdup(path);
+        if (!data->ea_path)
+            return (1);
     }
     else if (type == 6) // FLOOR COLOR
-    {
-        
+    {  
         if (data->found.found_f == 1)
             return(1);
         data->found.found_f = 1;
         data->f_color = convert_to_rgb(path);
+        if (data->f_color == 1)
+            return (1);
     }
     else if (type == 7) // CEILLING COLOR
-    {
-        
+    {   
         if (data->found.found_c == 1)
             return(1);
         data->found.found_c = 1;
         data->c_color = convert_to_rgb(path);
+        if (data->c_color == 1)
+            return (1);
     }
     return (0);
 }
@@ -74,40 +81,44 @@ int is_valid_extension(char *path, char *name)// X 0 1 return
 {
     int len;
 
-    if (!path)
+    if (!path || !name)
         return (1);
     len = ft_strlen(path);
     if (len < 5)
-        return (0);
-    if (ft_strncmp(&path[len - 4], name, 4) == 0)
         return (1);
-    return (0);
+    if (ft_strncmp(&path[len - 4], name, 4) == 0)
+        return (0);
+    return (1);
 }
 
-int get_type(char *line)
+
+int get_type(char *line, t_data *data)
 {
     int i;
 
     i = 0;
     if (!line || line[0] == '\0')
         return (1);
-    if (line[0] == '\0')
-        return (1);
+    if (line[0] == '\0' && data->map_start == 1)
+        return (9);
     while (line[i] == ' ')
         i++;
-    if(ft_strncmp("NO", line, 3) == 0)
+    if(ft_strncmp("NO", line, 2) == 0 && ft_strlen(line) == 2)
         return (2);
-    else if(ft_strncmp(line, "SO", 3) == 0)
+    else if(ft_strncmp(line, "SO", 2) == 0 && ft_strlen(line) == 2)
         return (3);
-    else if(ft_strncmp(line, "WE", 3) == 0)
+    else if(ft_strncmp(line, "WE", 2) == 0 && ft_strlen(line) == 2)
         return (4);
-    else if(ft_strncmp(line, "EA", 3) == 0)
+    else if(ft_strncmp(line, "EA", 2) == 0 && ft_strlen(line) == 2)
         return (5);
-    else if(ft_strncmp(line, "F", 2) == 0)
+    else if(ft_strncmp(line, "F", 1) == 0 && ft_strlen(line) == 1)
         return (6);
-    else if(ft_strncmp(line, "C", 2) == 0)
+    else if(ft_strncmp(line, "C", 1) == 0 && ft_strlen(line) == 1)
         return (7);
-    return (8);
+    else if (!valid_chars(line, NULL, 0))
+        return (8);
+    else
+        return (1);
 }
 
 void remove_newline(char *line)

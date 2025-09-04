@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/09/01 11:30:09 by aferryat         ###   ########.fr       */
+=======
+/*   Updated: 2025/09/03 18:12:59 by zyahansa         ###   ########.fr       */
+>>>>>>> 2aa926c1263f11f4f555b41e988c5103ee7480c7
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub.h"
-
-
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -58,9 +59,13 @@ int main(int ac, char **av)
     if (!data)
         return (print_error());
     if (parsing_part(data, av[1]) == 1)
-        return (1);//free data
-    // open_read(data, av[1]);
+    {
+        return (1);//hna khasni nzid free data
+    }
     print_parsed_header(data);
     start(data);
     return (0);
 }
+
+
+

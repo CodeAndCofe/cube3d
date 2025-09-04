@@ -8,9 +8,10 @@ SRCS2 = \
 	mlx_section/alloc.c
 SRCS = \
 	main.c \
-	pars/open_read.c \
+	pars/parsing.c \
 	pars/utils1.c \
 	pars/utils2.c \
+	pars/utils3.c \
 	Libft/ft_atoi.c \
 	Libft/ft_alpha.c \
 	Libft/ft_lstadd_back.c \
@@ -32,8 +33,9 @@ SRCS = \
 	Libft/ft_strrchr.c \
 	Libft/ft_substr.c\
 	next_line/get_next_line.c \
-	next_line/get_next_line_utils.c\
+	next_line/get_next_line_utils.c \
 	$(SRCS2)
+
 
 
 OBJS = $(SRCS:.c=.o)
@@ -42,7 +44,7 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAG) $(LDFLAGS) $(LIBS_TO_LINK) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS_TO_LINK) -o $(NAME)
 
 %.o: %.c include/cub.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

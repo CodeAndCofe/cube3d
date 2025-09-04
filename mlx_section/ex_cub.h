@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 15:58:45 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/02 17:10:48 by aferryat         ###   ########.fr       */
+/*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
+/*   Updated: 2025/09/04 12:38:50 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef EX_CUB_H
 #define EX_CUB_H
-#include "../include/cub.h"
+#include "cub.h"
 #include "mlx.h"
 #include <stdio.h>
 
@@ -26,6 +26,7 @@ typedef struct  s_pixel
     int     endian;
     struct  s_pixel *next;
 }t_pixel;
+
 
 typedef struct s_mlx
 {
