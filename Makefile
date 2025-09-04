@@ -1,9 +1,11 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Iinclude -g #-fsanitize
-MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG =  -lmlx -framework OpenGL -framework AppKit
 SRCS2 = \
 	mlx_section/temp.c\
-	mlx_section/mlx_manager.c
+	mlx_section/mlx_manager.c\
+	mlx_section/drawer.c\
+	mlx_section/alloc.c
 SRCS = \
 	main.c \
 	pars/open_read.c \

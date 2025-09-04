@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 11:16:30 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/08/29 16:18:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/01 11:30:22 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char			*ft_itoa(int n);
 
 
 
-void    start();
+void    start(t_data *data);
 
 
 

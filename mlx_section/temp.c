@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 15:49:18 by aferryat          #+#    #+#             */
-/*   Updated: 2025/08/29 16:06:17 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/02 17:10:25 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ char    **create_map()
 
 
 
-void    add_temporary_map(t_data    *data)
+int    add_temporary_map(t_data    *data)
 {
     char  **map;
     
     map = create_map();
     if (map == NULL)
-        return ;
+        return -1;
     data->maps = map;
+    return 1;
 }
