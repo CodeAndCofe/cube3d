@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/06 13:09:46 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/06 14:56:47 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ typedef struct s_mlx
 
 typedef struct  s_player
 {
-    double  x;
-    double  y;
+    t_data  *data;
+    t_pixel *pixel;
+    t_mlx   *mlx;
+    int  x;
+    int  y;
     double  degre;
-    
 }t_player;
 
-t_pixel *new_pixel(t_pixel *pixel);
-void    my_square(t_mlx *new_mlx, t_pixel *data, int size, int color);
-void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
+t_pixel    *draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player);
+int	        event_listener(int keycode, t_player *player);
+t_pixel     *draw_object(t_player *player, int i , int j, t_mlx *new_mlx);
+t_pixel     *new_pixel(t_pixel *pixel);
+void        my_square(t_mlx *new_mlx, t_pixel *data, int size, int color);
+void	    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 #endif

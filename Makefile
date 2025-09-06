@@ -1,10 +1,11 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Iinclude -g #-fsanitize
+CFLAGS = -Wall -Werror -Wextra -Iinclude -g -fsanitize=address
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 SRCS2 = \
 	mlx_section/mlx_manager.c\
 	mlx_section/drawer.c\
-	mlx_section/alloc.c
+	mlx_section/alloc.c\
+	mlx_section/events.c 
 SRCS = \
 	main.c \
 	pars/parsing.c \
