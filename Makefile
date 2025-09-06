@@ -1,8 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -Iinclude -g #-fsanitize
-MLX_FLAG =  -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 SRCS2 = \
-	mlx_section/temp.c\
 	mlx_section/mlx_manager.c\
 	mlx_section/drawer.c\
 	mlx_section/alloc.c
@@ -44,7 +43,7 @@ NAME = cub3d
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LIBS_TO_LINK) -o $(NAME)
+	$(CC) $(CFLAGS) $(MLX_FLAG) $(OBJS) $(LDFLAGS) $(LIBS_TO_LINK) -o $(NAME)
 
 %.o: %.c include/cub.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

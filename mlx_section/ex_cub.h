@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/04 12:38:50 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:09:46 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #ifndef EX_CUB_H
 #define EX_CUB_H
 #include "cub.h"
-#include "mlx.h"
+#include <mlx.h>
 #include <stdio.h>
 
 typedef struct  s_pixel
@@ -34,8 +34,15 @@ typedef struct s_mlx
     void    *win_mlx;  
 }t_mlx;
 
+typedef struct  s_player
+{
+    double  x;
+    double  y;
+    double  degre;
+    
+}t_player;
+
 t_pixel *new_pixel(t_pixel *pixel);
-int    add_temporary_map(t_data    *data);
 void    my_square(t_mlx *new_mlx, t_pixel *data, int size, int color);
 void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 #endif
