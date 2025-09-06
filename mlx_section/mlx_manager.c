@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:08:38 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/06 15:48:36 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:19:55 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,38 @@ t_pixel    *draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
         }
         i++;
     }
+    wlk->next = malloc(sizeof (t_pixel));
+    if (wlk == NULL)
+        return (NULL);
+    wlk = wlk->next;
+    my_square(new_mlx, wlk, 50, 0xFF00FF);
+    mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, wlk->img, player->x * 51, player->y * 51);
     wlk->next = NULL;
     pixel = pixel->next;
     return (pixel);
 }
 
+void    find_player_position(t_player *player)
+{
+    int i = 0;
+    int j = 0;
+    while (player->data->maps[i])
+    {
+        j = 0;
+        while (player->data->maps[i][j])
+        {
+            if (player->data->maps[i][j] == 'N')
+            {
+                player->degre = 0;
+                player->x = j;
+                player->y = i;
+                return ;
+            }
+            j++;
+        }
+        i++;
+    }
+}
 
 
 void    start(t_data *data)
@@ -58,6 +85,7 @@ void    start(t_data *data)
     t_pixel     *pixel;// fucose on this in fauture!
 
     player.data = data;
+    find_player_position(&player);
     pixel = malloc(sizeof (t_pixel));
     if (!pixel)
         return ;

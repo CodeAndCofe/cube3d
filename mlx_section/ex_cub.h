@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/06 14:56:47 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/06 16:49:03 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct  s_player
     t_data  *data;
     t_pixel *pixel;
     t_mlx   *mlx;
+    double  degre;
     int  x;
     int  y;
-    double  degre;
 }t_player;
 
 t_pixel    *draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player);

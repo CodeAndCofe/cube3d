@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:15:02 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/06 14:16:53 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/06 17:15:14 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,11 @@ t_pixel    *draw_object(t_player  *player, int i , int j, t_mlx *new_mlx)// func
         return (NULL);
     if (player->data->maps[i][j] == '1')
         my_square(new_mlx, wlk, 50, 0x00FF0000);
-    else if (player->data->maps[i][j] == '0')
-        my_square(new_mlx, wlk, 50, 0x0000FF00);
     else
-    {
-        player->data->maps[i][j] = '0';
-        player->x = j;
-        player->y = i;
-        my_square(new_mlx, wlk, 50, 0x000000FF);
-    }
+        my_square(new_mlx, wlk, 50, 0x0000FF00);
+    // else if (player->y == i && player->x == j)
+    // {
+    //     my_square(new_mlx, wlk, 50, 0x000000FF);
+    // }
     return (wlk);
 }
