@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:08:38 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/06 17:19:55 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:16:54 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_pixel    *draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
     if (wlk == NULL)
         return (NULL);
     wlk = wlk->next;
-    my_square(new_mlx, wlk, 50, 0xFF00FF);
-    mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, wlk->img, player->x * 51, player->y * 51);
+    player_pixel(new_mlx, wlk, 20, 0xFF00FF);
+    mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, wlk->img, player->x, player->y);
     wlk->next = NULL;
     pixel = pixel->next;
     return (pixel);
@@ -66,9 +66,9 @@ void    find_player_position(t_player *player)
         {
             if (player->data->maps[i][j] == 'N')
             {
-                player->degre = 0;
-                player->x = j;
-                player->y = i;
+                player->degre = degree_to_radiant(0);
+                player->x = j * 51 + 15;
+                player->y = i * 51 + 15;
                 return ;
             }
             j++;
@@ -77,6 +77,12 @@ void    find_player_position(t_player *player)
     }
 }
 
+int    render(t_player *player)
+{
+    mlx_key_hook(player->mlx->win_mlx, event_listener, player);
+    mlx_hook(player->mlx->win_mlx, 17, 0, close_window, player->mlx);
+    return (0);
+}
 
 void    start(t_data *data)
 {
@@ -98,7 +104,6 @@ void    start(t_data *data)
     // just the test
     player.pixel = pixel;
     player.mlx = &new_mlx;
-    mlx_key_hook(new_mlx.win_mlx, event_listener, &player);
-    mlx_hook(new_mlx.win_mlx, 17, 0, close_window, &new_mlx);
+    mlx_loop_hook(new_mlx.mlx, render, &player);
     mlx_loop(new_mlx.mlx);
 }

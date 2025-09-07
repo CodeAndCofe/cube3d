@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/06 16:49:03 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/07 15:15:47 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "cub.h"
 #include <mlx.h>
 #include <stdio.h>
+#include <math.h>
+
+// #define M_PI 3.14159265358979323846
 
 typedef struct  s_pixel
 {
@@ -44,10 +47,12 @@ typedef struct  s_player
     int  y;
 }t_player;
 
+void        player_pixel(t_mlx *new_mlx, t_pixel *data, int size, int color);
 t_pixel    *draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player);
 int	        event_listener(int keycode, t_player *player);
 t_pixel     *draw_object(t_player *player, int i , int j, t_mlx *new_mlx);
 t_pixel     *new_pixel(t_pixel *pixel);
 void        my_square(t_mlx *new_mlx, t_pixel *data, int size, int color);
 void	    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
+double      degree_to_radiant(int n);
 #endif
