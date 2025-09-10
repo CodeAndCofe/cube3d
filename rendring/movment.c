@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   movment.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 14:17:49 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/08 08:56:17 by aferryat         ###   ########.fr       */
+/*   Created: 2025/09/09 16:42:04 by aferryat          #+#    #+#             */
+/*   Updated: 2025/09/09 22:38:10 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	go_forward(t_player *player)
 {
 	player->x += cos(player->degre) * 10;
 	player->y += sin(player->degre) * 10;
-	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
-	draw_map(player->pixel, player->mlx, player);
 }
 
 
@@ -25,8 +23,6 @@ void	go_backward(t_player *player)
 {
 	player->x -= cos(player->degre) * 10;
 	player->y -= sin(player->degre) * 10;
-	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
-	draw_map(player->pixel, player->mlx, player);
 }
 
 void	turn(t_player	*player, int rl)
@@ -47,31 +43,5 @@ int	action(t_player *player)
 		turn(player, 1);
 	else if (player->d == 1)
 		turn(player, 2);
-	return (0);
-}
-
-int	event_listener(int keycode, t_player *player)
-{
-	if (keycode == 13)// forward
-		player->w = 1;
-	else if (keycode == 1)
-		player->s = 1;
-	else if (keycode == 0)
-		player->a = 1;
-	else if (keycode == 2)
-		player->d = 1;
-	return (0);
-}
-
-int	event_realise(int keycode, t_player *player)
-{
-	if (keycode == 13)// forward
-		player->w = 0;
-	else if (keycode == 1)
-		player->s = 0;
-	else if (keycode == 0)
-		player->a = 0;
-	else if (keycode == 2)
-		player->d = 0;
 	return (0);
 }

@@ -1,54 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   mlx_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 14:17:49 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/08 08:56:17 by aferryat         ###   ########.fr       */
+/*   Created: 2025/09/09 16:39:12 by aferryat          #+#    #+#             */
+/*   Updated: 2025/09/09 22:35:28 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
-
-void	go_forward(t_player *player)
-{
-	player->x += cos(player->degre) * 10;
-	player->y += sin(player->degre) * 10;
-	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
-	draw_map(player->pixel, player->mlx, player);
-}
-
-
-void	go_backward(t_player *player)
-{
-	player->x -= cos(player->degre) * 10;
-	player->y -= sin(player->degre) * 10;
-	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
-	draw_map(player->pixel, player->mlx, player);
-}
-
-void	turn(t_player	*player, int rl)
-{
-	if (rl == 1)
-		player->degre -= degree_to_radiant(1);
-	else
-		player->degre += degree_to_radiant(1);
-}
-
-int	action(t_player *player)
-{
-	if (player->w == 1)// forward
-		go_forward(player);
-	else if (player->s == 1)
-		go_backward(player);
-	else if (player->a == 1)
-		turn(player, 1);
-	else if (player->d == 1)
-		turn(player, 2);
-	return (0);
-}
 
 int	event_listener(int keycode, t_player *player)
 {
@@ -74,4 +36,13 @@ int	event_realise(int keycode, t_player *player)
 	else if (keycode == 2)
 		player->d = 0;
 	return (0);
+}
+
+int    render(t_player *player)
+{
+	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
+	draw_map(player->mlx, player);
+    action(player);
+    // mlx_hook(player->mlx->win_mlx, 17, 0, close_window, player->mlx);
+    return (0);
 }

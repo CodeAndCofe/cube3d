@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 16:08:38 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/07 15:16:54 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/08 08:36:26 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void    find_player_position(t_player *player)
 
 int    render(t_player *player)
 {
-    mlx_key_hook(player->mlx->win_mlx, event_listener, player);
+    // mlx_key_hook(player->mlx->win_mlx, event_listener, player);
+    action(player);
     mlx_hook(player->mlx->win_mlx, 17, 0, close_window, player->mlx);
     return (0);
 }
@@ -91,6 +92,7 @@ void    start(t_data *data)
     t_pixel     *pixel;// fucose on this in fauture!
 
     player.data = data;
+    set_zero(&player);
     find_player_position(&player);
     pixel = malloc(sizeof (t_pixel));
     if (!pixel)
@@ -104,6 +106,8 @@ void    start(t_data *data)
     // just the test
     player.pixel = pixel;
     player.mlx = &new_mlx;
+    mlx_hook(player.mlx->win_mlx, 2, 1L<<0, event_listener, &player);
+    mlx_hook(player.mlx->win_mlx, 3, 1L<<1, event_realise, &player);
     mlx_loop_hook(new_mlx.mlx, render, &player);
     mlx_loop(new_mlx.mlx);
 }

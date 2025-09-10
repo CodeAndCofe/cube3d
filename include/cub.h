@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/04 12:39:14 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:13:48 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 char			*ft_itoa(int n);
 
-void    start(t_data *data);
-void    start();
+int    start(t_data *data);
+int    start();
 
 #endif

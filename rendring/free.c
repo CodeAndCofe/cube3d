@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/07 15:14:09 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/08 09:06:59 by aferryat         ###   ########.fr       */
+/*   Created: 2025/09/09 16:22:14 by aferryat          #+#    #+#             */
+/*   Updated: 2025/09/09 22:37:56 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
 
-double  degree_to_radiant(double n)
+void    pixels_free(t_pixel *pixels)
 {
-    return (n * (M_PI / 180.0));   
-}
+    t_pixel *temp;
 
-void    set_zero(t_player *player)
-{
-    player->w = 0;
-    player->d = 0;
-    player->a = 0;
-    player->s = 0;
-    player->x = 0;
-    player->y = 0;
-    player->degre = 0;
+    temp = pixels->next;
+    while (temp)
+    {
+        free(pixels);
+        pixels = temp;
+        temp = temp->next;
+    }
+    free(pixels);
 }
