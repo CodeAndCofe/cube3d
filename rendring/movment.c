@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:42:04 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/09 22:38:10 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/14 14:40:42 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,36 @@
 
 void	go_forward(t_player *player)
 {
-	player->x += cos(player->degre) * 10;
-	player->y += sin(player->degre) * 10;
+	double x =  player->x + cos(player->radiant) * SPEED;
+	double y = player->y + sin(player->radiant) * SPEED;
+	if (player->data->maps[(int)y][(int)x] == '1')
+		return ;
+	player->x = x;
+	player->y = y;
 }
 
 
 void	go_backward(t_player *player)
 {
-	player->x -= cos(player->degre) * 10;
-	player->y -= sin(player->degre) * 10;
+	double x = player->x - cos(player->radiant) * SPEED;
+	double y = player->y - sin(player->radiant) * SPEED;
+	if (player->data->maps[(int)y][(int)x] == '1')
+		return ;
+	player->x = x;
+	player->y = y;
 }
 
 void	turn(t_player	*player, int rl)
 {
 	if (rl == 1)
-		player->degre -= degree_to_radiant(1);
+		player->radiant -= degree_to_radiant(3);
 	else
-		player->degre += degree_to_radiant(1);
+		player->radiant += degree_to_radiant(3);
 }
 
 int	action(t_player *player)
 {
-	if (player->w == 1)// forward
+	if (player->w == 1)
 		go_forward(player);
 	else if (player->s == 1)
 		go_backward(player);

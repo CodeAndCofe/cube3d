@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:36:44 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/09 22:27:57 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/14 13:36:31 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double  degree_to_radiant(double n)
 {
-    return (n * (M_PI / 180.0));   
+    return (n * ((M_PI) / 180.0));   
 }
 
 void    set_zero(t_player *player)
@@ -25,21 +25,21 @@ void    set_zero(t_player *player)
     player->s = 0;
     player->x = 0;
     player->y = 0;
-    player->degre = 0;
+    player->radiant = 0;
 }
 
 void    set_player_position_and_degree(t_player *player, char c, int j , int i)
 {
-    player->x = j * 51 + 15;
-    player->y = i * 51 + 15;
+    player->x = j;
+    player->y = i;
     if (c == 'N')
-        player->degre = degree_to_radiant(270);
+        player->radiant = degree_to_radiant(270);
     else if (c == 'S')
-        player->degre = degree_to_radiant(0);
+        player->radiant = degree_to_radiant(180);
     else if (c == 'W')
-        player->degre = degree_to_radiant(0);
+        player->radiant = degree_to_radiant(90);
     else if (c == 'E')
-        player->degre = degree_to_radiant(0);
+        player->radiant = degree_to_radiant(0);
 }
 
 void    find_player_position(t_player *player)

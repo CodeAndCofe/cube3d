@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:39:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/09 22:35:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/11 01:50:52 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int	event_realise(int keycode, t_player *player)
 
 int    render(t_player *player)
 {
+	if (player->pixel->img)
+		mlx_destroy_image(player->mlx->mlx, player->pixel->img);
 	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
-	draw_map(player->mlx, player);
+	draw_map(player->pixel, player->mlx, player);
     action(player);
-    // mlx_hook(player->mlx->win_mlx, 17, 0, close_window, player->mlx);
     return (0);
 }

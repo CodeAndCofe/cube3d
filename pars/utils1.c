@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:03 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/09/02 13:58:53 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/15 13:08:28 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int store_data(int type, t_data *data, char *path)
     if (!data || !path)
         return (1);
         
-    if (type == 2) // NO
+    if (type == 2)
     {
         if (data->found.found_no == 1)
             return(1);
@@ -27,7 +27,7 @@ int store_data(int type, t_data *data, char *path)
         if (!data->no_path)
             return (1);
     }
-    else if (type == 3) // SO
+    else if (type == 3)
     {   
 
         if (data->found.found_so == 1)
