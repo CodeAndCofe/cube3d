@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:34:50 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/14 14:04:45 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/16 14:48:55 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int    start(t_data *data)
 	set_zero (&player);
 	find_player_position(&player);
 	new_mlx.mlx = mlx_init();
-	new_mlx.win_mlx = mlx_new_window(new_mlx.mlx, HIGTH, WIDTH, "CUB3d");
+	new_mlx.win_mlx = mlx_new_window(new_mlx.mlx, WIDTH, HIGTH, "CUB3d");
 	player.mlx = &new_mlx;
 	draw_map(pixel, &new_mlx, &player);
 	player.pixel = pixel;

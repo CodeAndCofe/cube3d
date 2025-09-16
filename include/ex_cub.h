@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/14 14:30:43 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/16 14:49:48 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,15 @@ typedef struct  s_player
 	int  d;
 	int  a;
 }t_player;
-
+#define		MAX_DEST 70.0
+#define		P_COLOR	0x00FF00
+#define		G_COLOR	0x808000
+#define		W_COLOR	0x222222
+#define		L_COLOR 0x0000FF
+#define		VIEW  60.0
 #define 	SPEED 0.2
-#define 	WIDTH 600
-#define 	HIGTH 800
+#define 	WIDTH 2000
+#define 	HIGTH 1500
 #define 	OBJECT 32
 void		pixels_free(t_pixel *pixels, t_mlx *mlx);
 void   		draw_square(t_pixel *pixel, int i, int j, int color, int size);
