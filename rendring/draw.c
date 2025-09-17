@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:48:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/16 15:11:13 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/17 13:41:11 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	draw_wall(t_pixel *pixel, double WALL_HIEGTH, int x)
 	if (top < 0) top = 0;
 	if (bottom >= HIGTH) bottom = HIGTH - 1;	
 	while (top < bottom)
-	{
+	{		
+		// int wall_y = top / WALL_HIEGTH * tex_height;
+		// int wall_x = point_of_intersection * tex_width;
 		my_mlx_pixel_put(pixel, x, top, P_COLOR);
 		top ++;
 	}	
