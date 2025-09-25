@@ -49,7 +49,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(MLX_FLAG) $(OBJS) $(LDFLAGS) $(LIBS_TO_LINK) -o $(NAME)
 
-%.o: %.c include/cub.h
+%.o: %.c include/cub.h include/ex_cub.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
