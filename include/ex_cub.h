@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/25 17:23:19 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:56:12 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct  s_player
 }t_player;
 #define		P_COLOR	0x00FF00
 #define		G_COLOR	0x808000
-#define		W_COLOR	0x5682B1
+#define		W_COLOR	0xFF0000
 #define		L_COLOR 0x0000FF
 #define		VIEW  60.0
 #define 	SPEED 0.2

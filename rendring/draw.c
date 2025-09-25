@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:48:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/25 17:38:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/25 18:11:54 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,27 @@ int	draw_player(t_pixel *pixel, t_player *player, int size)
 }
 
 
-void	draw_wall(t_pixel *pixel, double WALL_HIEGTH, int x)
+void	draw_wall(t_pixel *pixel, double WALL_HIEGTH, double ray_angle,int x)
 {
+	double ix = ray_angle * (180 / M_PI);
+	if (ix > 360)
+	{
+		ix -= 360;
+	}
+	else if (ix < 0)
+	{
+		ix += 360;
+	}
 	double top =  (HIGTH / 2) - (WALL_HIEGTH / 2);
 	double bottom =  (HIGTH / 2) + (WALL_HIEGTH / 2);
 	if (top < 0) top = 0;
 	if (bottom >= HIGTH) bottom = HIGTH - 1;	
 	while (top < bottom)
-	{		
-		// int wall_y = top / WALL_HIEGTH * tex_height;
-		// int wall_x = point_of_intersection * tex_width;
-		my_mlx_pixel_put(pixel, x, top, P_COLOR);
+	{
+		if (ix >= 260 && ix <= 280)
+			my_mlx_pixel_put(pixel, x, top, W_COLOR);
+		else
+			my_mlx_pixel_put(pixel, x, top, P_COLOR);
 		top ++;
 	}	
 	while (bottom < HIGTH)
@@ -74,7 +84,7 @@ int draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 		{
 			real_distance = distance * cos(player->radiant - ray_angle);
 			WALL_HIEGTH = ppd / real_distance;
-			draw_wall(pixel, WALL_HIEGTH, i);
+			draw_wall(pixel, WALL_HIEGTH, ray_angle, i);
 			break;
 		}
 	}
