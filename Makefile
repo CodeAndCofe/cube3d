@@ -8,7 +8,8 @@ SRCS2 = \
 	rendring/rendring.c\
 	rendring/free.c\
 	rendring/mlx_tools.c\
-	rendring/movment.c
+	rendring/movment.c\
+	texture/load_text.c
 SRCS = \
 	main.c \
 	pars/parsing.c \

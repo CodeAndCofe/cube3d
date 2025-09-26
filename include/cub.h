@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/09 15:13:48 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:11:32 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,19 @@ typedef struct s_data
     int start_pos_y;
     int palyer_direction;
     struct s_found  found;
+
+    void *no_texture;
+    void *so_texture;
+    void *we_texture;
+    void *ea_texture;
+
+    char *no_address;
+    char *so_address;
+    char *we_address;
+    char *ea_address;
+
+    int tex_with;
+    int tex_height;    
 }   t_data;
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/16 14:49:48 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:06:55 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,13 @@ typedef struct  s_player
 	int  s;
 	int  d;
 	int  a;
-}t_player;
+}	t_player;
+
+
+
 #define		MAX_DEST 70.0
-#define		P_COLOR	0x00FF00
-#define		G_COLOR	0x808000
+#define		P_COLOR	0xffFF00
+#define		G_COLOR	0xffffff00
 #define		W_COLOR	0x222222
 #define		L_COLOR 0x0000FF
 #define		VIEW  60.0
@@ -74,4 +77,14 @@ int	        event_realise(int keycode, t_player *player);
 int	        event_listener(int keycode, t_player *player);
 void	    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 double      degree_to_radiant(double n);
+
+
+
+
+////////////texture funtction////////////////////////////////
+int load_texture(t_player *player);
+void init_tex_side(int *tex_side, int wall_side, t_pixel *pixel);
+double get_top(double wall_height);
+double get_bottom(double wall_height);
+
 #endif
