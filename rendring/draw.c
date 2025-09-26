@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:48:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/26 18:30:47 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:37:14 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
     while (1)
     {
         // Store previous position before moving ray
-        double old_ray_x = ray_x;
+        // double old_ray_x = ray_x;
         double old_ray_y = ray_y;
         
         // Move ray
@@ -162,8 +162,8 @@ void    player_view(t_pixel *pixel, t_player *player)
 
 int	draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
 {
-	int	i = 0;
-	int	j = 0;
+	// int	i = 0;
+	// int	j = 0;
 	pixel->img = mlx_new_image(new_mlx->mlx, WIDTH, HIGTH);
 	pixel->addr = mlx_get_data_addr(pixel->img, &pixel->bits_per_pixel, &pixel->line_length, &pixel->endian);
 	// while (player->data->maps[i])
