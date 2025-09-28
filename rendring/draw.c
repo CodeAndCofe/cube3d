@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:48:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/28 13:01:38 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 16:05:50 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,19 @@ void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, t_playe
     char* tex_side;
     int i;
     int text_x;
-    int text_y;
     int color;
+    double tex_step;
+    double tex_pos;
 
     top = get_top(wall_height);
     bottom = get_bottom(wall_height);
+
     
     text_x = (int)(hit_point * player->data->tex_with);
-    if (text_x >= player->data->tex_with) text_x = player->data->tex_with - 1;
-    if (text_x < 0) text_x = 0;
+    if (text_x >= player->data->tex_with)
+        text_x = player->data->tex_with - 1;
+    if (text_x < 0)
+        text_x = 0;
     init_tex_side(&tex_side, wall_side, player);
     i = 0;
     while (i < (int)top)
@@ -58,21 +62,25 @@ void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, t_playe
         i++;
     }
     i = (int)top;
-    while (i < (int)bottom)
+    tex_step = (double)player->data->tex_height / wall_height;
+    tex_pos = (top - HIGTH / 2 + wall_height / 2) * tex_step;
+        
+    for (int i = top; i < bottom; i++)
     {
-        text_y = (top - (HIGTH / 2) + (wall_height / 2) * player->data->tex_height / wall_height);
-        if (text_y >= player->data->tex_height)
-            text_y = player->data->tex_height - 1;
-        // color = get_texture_pixel(tex_side, text_x, text_y, pixel->line_length, pixel->bits_per_pixel);
+        int text_y = (int)tex_pos;
+        if (text_y >= player->data->tex_height) text_y = player->data->tex_height - 1;
+        if (text_y < 0) text_y = 0;
+        
         color = get_texture_pixel(tex_side, text_x, text_y, 
-                                    player->data->tex_line_len,
-                                    player->data->tex_bpp,
-                                    player->data->tex_with,
-                                    player->data->tex_height);
-        my_mlx_pixel_put(pixel, x, i, color);   
-        i++;
+                     player->data->tex_line_len,
+                     player->data->tex_bpp,
+                     player->data->tex_with,
+                     player->data->tex_height);
+        
+        my_mlx_pixel_put(pixel, x, i, color);
+        tex_pos += tex_step;
     }
-    i = 0;
+
     i = (int)bottom;
     while (i < HIGTH)
     {
@@ -80,7 +88,6 @@ void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, t_playe
         i++;
     }
 }
-
 
 
 int draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)

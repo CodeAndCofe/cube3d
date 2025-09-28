@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/28 11:48:02 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 15:51:07 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct  s_player
 #define		W_COLOR	0x222222
 #define		L_COLOR 0x0000FF
 #define		VIEW  60.0
-#define 	SPEED 0.2
+#define 	SPEED 0.4
 #define 	WIDTH 800
 #define 	HIGTH 600
 #define 	OBJECT 32
