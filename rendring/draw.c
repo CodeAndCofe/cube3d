@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 13:48:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/26 18:37:14 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 13:01:38 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,48 @@ int	draw_player(t_pixel *pixel, t_player *player, int size)
 }
 
 
-
-
-void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x)
+void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, t_player *player, double hit_point)
 {
+    if (!pixel || !player || !player->data || x < 0 || x >= WIDTH)
+        return ;
+
     double top;
     double bottom;
-    int tex_side;
+    char* tex_side;
     int i;
+    int text_x;
+    int text_y;
+    int color;
 
     top = get_top(wall_height);
     bottom = get_bottom(wall_height);
-    init_tex_side(&tex_side, wall_side, pixel);
-    i = (int)top;
-    while (i < (int)bottom)
-    {
-        my_mlx_pixel_put(pixel, x, i, tex_side);   
-        i++;
-    }
+    
+    text_x = (int)(hit_point * player->data->tex_with);
+    if (text_x >= player->data->tex_with) text_x = player->data->tex_with - 1;
+    if (text_x < 0) text_x = 0;
+    init_tex_side(&tex_side, wall_side, player);
     i = 0;
     while (i < (int)top)
     {
         my_mlx_pixel_put(pixel, x, i, 0x87CEEB);
         i++;
     }
+    i = (int)top;
+    while (i < (int)bottom)
+    {
+        text_y = (top - (HIGTH / 2) + (wall_height / 2) * player->data->tex_height / wall_height);
+        if (text_y >= player->data->tex_height)
+            text_y = player->data->tex_height - 1;
+        // color = get_texture_pixel(tex_side, text_x, text_y, pixel->line_length, pixel->bits_per_pixel);
+        color = get_texture_pixel(tex_side, text_x, text_y, 
+                                    player->data->tex_line_len,
+                                    player->data->tex_bpp,
+                                    player->data->tex_with,
+                                    player->data->tex_height);
+        my_mlx_pixel_put(pixel, x, i, color);   
+        i++;
+    }
+    i = 0;
     i = (int)bottom;
     while (i < HIGTH)
     {
@@ -62,6 +80,8 @@ void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x)
         i++;
     }
 }
+
+
 
 int draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 {
@@ -132,7 +152,7 @@ int draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
             WALL_HIEGTH = ppd / real_distance;
             
             // Draw wall with side information
-            draw_wall(WALL_HIEGTH, wall_side, pixel, i);
+            draw_wall(WALL_HIEGTH, wall_side, pixel, i, player, hit_point);
 
 
 
@@ -176,6 +196,7 @@ int	draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
 	// 	}
 	// 	i++;
 	// }
+    load_texture(player);
 	draw_player(pixel, player, OBJECT / 2);
 	player_view(pixel, player);
 	mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, pixel->img, 0, 0);

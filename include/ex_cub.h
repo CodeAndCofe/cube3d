@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/26 18:36:52 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 11:48:02 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct  s_player
 #define		L_COLOR 0x0000FF
 #define		VIEW  60.0
 #define 	SPEED 0.2
-#define 	WIDTH 2000
-#define 	HIGTH 1500
+#define 	WIDTH 800
+#define 	HIGTH 600
 #define 	OBJECT 32
 void		pixels_free(t_pixel *pixels, t_mlx *mlx);
 void   		draw_square(t_pixel *pixel, int i, int j, int color, int size);
@@ -83,8 +83,11 @@ double      degree_to_radiant(double n);
 
 ////////////texture funtction////////////////////////////////
 int load_texture(t_player *player);
-void init_tex_side(int *tex_side, int wall_side, t_pixel *pixel);
+void init_tex_side(char **tex_side, int wall_side, t_player *player);
 double get_top(double wall_height);
 double get_bottom(double wall_height);
+// int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
+int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp, int tex_width, int tex_height);
+
 
 #endif

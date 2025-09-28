@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/25 15:11:32 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 10:55:35 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ typedef struct s_data
 
     int tex_with;
     int tex_height;    
+
+    int tex_bpp;       // Texture bits per pixel
+    int tex_line_len;  // Texture line length in bytes  
+    int tex_endian;
 }   t_data;
 
 
