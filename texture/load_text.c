@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/09/28 13:02:39 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 13:33:26 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int load_texture(t_player *player)
 {
-    int bpp, line_len, endian; // Local variables for MLX to fill
     if (!player || !player->data || !player->mlx || !player->mlx->mlx)
         return 1;
-
 
     player->data->no_texture = mlx_xpm_file_to_image(player->mlx->mlx, 
     player->data->no_path, &player->data->tex_with, &player->data->tex_height);
@@ -35,29 +33,25 @@ int load_texture(t_player *player)
         !player->data->we_texture || !player->data->ea_texture)
             return (1);
     player->data->no_address = mlx_get_data_addr(player->data->no_texture,
-    &bpp, &line_len, &endian);
+    &player->data->tex_bpp, &player->data->tex_line_len, &player->data->tex_endian);
 
     player->data->so_address = mlx_get_data_addr(player->data->so_texture, 
-    &bpp, &line_len, &endian);
+    &player->data->tex_bpp, &player->data->tex_line_len, &player->data->tex_endian);
     
     player->data->we_address = mlx_get_data_addr(player->data->we_texture, 
-    &bpp, &line_len, &endian);
+    &player->data->tex_bpp, &player->data->tex_line_len, &player->data->tex_endian);
     
     player->data->ea_address = mlx_get_data_addr(player->data->ea_texture, 
-    &bpp, &line_len, &endian);
+    &player->data->tex_bpp, &player->data->tex_line_len, &player->data->tex_endian);
     
     if (!player->data->no_address || !player->data->so_address ||
         !player->data->we_address || !player->data->ea_address)
             return (1);
-    player->data->tex_bpp = bpp;
-    player->data->tex_line_len = line_len;
-    player->data->tex_endian = endian;
     return (0);
 }
 
 void init_tex_side(char **tex_side, int wall_side, t_player *player)
 {
-    (void)player;
     if (wall_side == 0)
         *tex_side = player->data->no_address;
         
