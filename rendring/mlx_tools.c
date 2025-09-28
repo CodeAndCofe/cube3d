@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:39:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/28 10:40:41 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/28 13:20:02 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	event_listener(int keycode, t_player *player)
 		player->a = 1;
 	else if (keycode == 2)
 		player->d = 1;
+	else if (keycode == 123)
+		player->left = 1;
+	else if (keycode == 124)
+		player->right = 1;
 	return (0);
 }
 
@@ -35,6 +39,10 @@ int	event_realise(int keycode, t_player *player)
 		player->a = 0;
 	else if (keycode == 2)
 		player->d = 0;
+	else if (keycode == 123)
+		player->left = 0;
+	else if (keycode == 124)
+		player->right = 0;
 	return (0);
 }
 
