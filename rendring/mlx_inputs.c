@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_tools.c                                        :+:      :+:    :+:   */
+/*   mlx_inputs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 16:39:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/28 13:20:02 by aferryat         ###   ########.fr       */
+/*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
+/*   Updated: 2025/10/02 15:46:20 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	event_listener(int keycode, t_player *player)
 
 int	event_realise(int keycode, t_player *player)
 {
-	if (keycode == 13)// forward
+	if (keycode == 13)
 		player->w = 0;
 	else if (keycode == 1)
 		player->s = 0;

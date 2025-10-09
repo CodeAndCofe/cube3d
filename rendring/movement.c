@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movment.c                                          :+:      :+:    :+:   */
+/*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 16:42:04 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/28 16:40:11 by aferryat         ###   ########.fr       */
+/*   Created: 2025/10/02 17:02:01 by aferryat          #+#    #+#             */
+/*   Updated: 2025/10/03 17:49:49 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
+
 
 void	go_forward(t_player *player)
 {
 	double x;
 	double y;
 
-	x =  player->x + cos(player->radiant) * SPEED;
-	y = player->y + sin(player->radiant) * SPEED;
-	if (player->data->maps[(int)y][(int)x] == '1')
-		return ;
-	player->x = x;
-	player->y = y;
+	y = player->y;
+	x = (player->x + cos(player->radiant) * SPEED);
+	if (!(player->data->maps[(int)(y)][(int)x] == '1'))
+		player->x = x;
+	y = (player->y + sin(player->radiant) * SPEED);
+	if (!(player->data->maps[(int)(y)][(int)x] == '1'))
+		player->y = y;
 }
 
 
@@ -31,12 +33,15 @@ void	go_backward(t_player *player)
 	double x;
 	double y;
 
-	x =  player->x - cos(player->radiant) * SPEED;
+	y = player->y;
+	x = player->x - cos(player->radiant) * SPEED;
+	if (!(player->data->maps[(int)(y)][(int)x] == '1'))
+		player->x = x;
 	y = player->y - sin(player->radiant) * SPEED;
-	if (player->data->maps[(int)y][(int)x] == '1')
-		return ;
-	player->x = x;
-	player->y = y;
+	if (!(player->data->maps[(int)(y)][(int)x] == '1'))
+		player->y = y;
+	
+	
 }
 
 void	turn(t_player	*player, int rl)

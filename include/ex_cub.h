@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/28 16:40:48 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/08 18:33:35 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,34 @@ typedef struct  s_player
 	t_data  *data;
 	t_mlx   *mlx;
 	t_pixel	*pixel;
+	// calculation
 	double  radiant;
 	double  x;
 	double  y;
+	double	distance;
+	double	hitx;
+	double	hity;
+	double	v_interx;
+	double	v_intery;
+	double	h_interx;
+	double	h_intery;
+	int	direction;
+	int	h_wall;
+	int	v_wall;
+	int	v_wall_hit_x;
+	int	v_wall_hit_y;
+	int	h_wall_hit_x;
+	int	h_wall_hit_y;
+	int	v_xsteps;
+	int	v_ysteps;
+	int	h_xsteps;
+	int	h_ysteps;
+	int	facing_down;
+	int	facing_up;
+	int	facing_right;
+	int	facing_left;
+	int	p_pos_x;
+	int p_pos_y;
 	// movement
 	int w;
 	int s;
@@ -52,17 +77,23 @@ typedef struct  s_player
 }	t_player;
 
 
-
+#define		NORTH 0
+#define		WEAST 1
+#define		SOTH  2
+#define		EAST  3
 #define		MAX_DEST 70.0
 #define		P_COLOR	0xffFF00
 #define		G_COLOR	0xffffff00
 #define		W_COLOR	0x222222
 #define		L_COLOR 0x0000FF
+#define		RED_COLOR 0xFF0000
 #define		VIEW  60.0
-#define 	SPEED 0.1
+#define 	SPEED 0.05
 #define 	WIDTH 800
-#define 	HIGTH 600
-#define 	OBJECT 32
+#define 	HEIGHT 600
+#define 	OBJECT 24
+#define		WIDTH_PER_PIXEL 1.5
+#define		M_INT_MAX 2147483646;
 void		pixels_free(t_pixel *pixels, t_mlx *mlx);
 void   		draw_square(t_pixel *pixel, int i, int j, int color, int size);
 int    		draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player);
@@ -78,6 +109,17 @@ int	        event_realise(int keycode, t_player *player);
 int	        event_listener(int keycode, t_player *player);
 void	    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 double      degree_to_radiant(double n);
+void		vertical_ray(t_player *player, t_pixel *pixel);
+void		the_intersects_vertical(double ray_angle, t_player *player);
+void		player_view(t_pixel *pixel, t_player *player);
+double		reset_radiant(double	angle);
+void		where_is_facing(double angle, t_player *player);
+int 		the_limit(int x, int y);
+int 		cordinate_limit(int x, int y, t_data *data);
+void		the_intersects_horizontal(double ray_angle, t_player *player);
+void		horizontal_ray(t_player *player, t_pixel *pixel);
+void		draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color);
+void		drawing_wall(t_player *player, t_pixel *pixel, int i);
 
 
 

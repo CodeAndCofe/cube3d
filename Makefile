@@ -1,15 +1,17 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Iinclude -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -Iinclude -fsanitize=address -g3
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit -lm
 SRCS2 = \
+	rendring/start.c\
 	rendring/draw.c\
-	rendring/objects.c\
+	rendring/object.c\
 	rendring/player.c\
-	rendring/rendring.c\
-	rendring/free.c\
-	rendring/mlx_tools.c\
-	rendring/movment.c\
-	texture/load_text.c
+	rendring/view.c\
+	rendring/mlx_inputs.c\
+	rendring/movement.c\
+	rendring/helper.c\
+	rendring/drawing_wall.c
+
 SRCS = \
 	main.c \
 	pars/parsing.c \
@@ -46,6 +48,9 @@ OBJS = $(SRCS:.c=.o)
 NAME = cub3d
 
 all: $(NAME)
+
+start: all clean
+	./cub3d input2.cub
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(MLX_FLAG) $(OBJS) $(LDFLAGS) $(LIBS_TO_LINK) -o $(NAME)

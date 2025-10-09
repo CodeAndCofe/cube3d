@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendring.c                                         :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 13:34:50 by aferryat          #+#    #+#             */
-/*   Updated: 2025/09/26 10:31:22 by zyahansa         ###   ########.fr       */
+/*   Created: 2025/10/01 16:38:14 by aferryat          #+#    #+#             */
+/*   Updated: 2025/10/02 17:51:38 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
 
-
-int mlx_actions(t_player *player)
+void	mlx_action(t_player *player)
 {
 	mlx_hook(player->mlx->win_mlx, 2, 1L<<0, event_listener, player);
 	mlx_hook(player->mlx->win_mlx, 3, 1L<<1, event_realise, player);
 	mlx_loop_hook(player->mlx->mlx, render, player);
-	return (0);
 }
 
-int    start(t_data *data)
+int start(t_data *data)
 {
-	t_pixel		*pixel;
-	t_player    player;
-	t_mlx       new_mlx;
+    t_pixel		pixel;
+    t_player	player;
+	t_mlx		new_mlx;
 
-	pixel = malloc (sizeof (t_pixel));
-	if (pixel == NULL)
-		return (-1);
 	player.data = data;
-	set_zero (&player);
+	player.pixel = &pixel;
+	set_zero(&player);// seting player to zero
 	find_player_position(&player);
 	new_mlx.mlx = mlx_init();
-	new_mlx.win_mlx = mlx_new_window(new_mlx.mlx, WIDTH, HIGTH, "CUB3d");
+	new_mlx.win_mlx = mlx_new_window(new_mlx.mlx, WIDTH, HEIGHT, "cub3d");
 	player.mlx = &new_mlx;
-	draw_map(pixel, &new_mlx, &player);
-	player.pixel = pixel;
-	mlx_actions(&player);
+	draw_map(&pixel, &new_mlx, &player);// draw map and player
+	mlx_action(&player);
 	mlx_loop(new_mlx.mlx);
-	pixels_free(pixel, &new_mlx);
-	return (0);
+    return (0);
 }
