@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/08 18:33:35 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:58:55 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ typedef struct  s_player
 	double	v_intery;
 	double	h_interx;
 	double	h_intery;
-	int	direction;
+	double	direction;
 	int	h_wall;
 	int	v_wall;
-	int	v_wall_hit_x;
-	int	v_wall_hit_y;
-	int	h_wall_hit_x;
-	int	h_wall_hit_y;
-	int	v_xsteps;
-	int	v_ysteps;
-	int	h_xsteps;
-	int	h_ysteps;
+	double	v_wall_hit_x;
+	double	v_wall_hit_y;
+	double	h_wall_hit_x;
+	double	h_wall_hit_y;
+	double	v_xsteps;
+	double	v_ysteps;
+	double	h_xsteps;
+	double	h_ysteps;
 	int	facing_down;
 	int	facing_up;
 	int	facing_right;
