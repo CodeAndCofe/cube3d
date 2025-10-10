@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/09 14:58:55 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:12:29 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct  s_player
 	t_mlx   *mlx;
 	t_pixel	*pixel;
 	// calculation
+	double	hit_point;
+	int		wall_side;
 	double  radiant;
 	double  x;
 	double  y;
@@ -50,7 +52,7 @@ typedef struct  s_player
 	double	v_intery;
 	double	h_interx;
 	double	h_intery;
-	double	direction;
+	int	direction;
 	int	h_wall;
 	int	v_wall;
 	double	v_wall_hit_x;
@@ -88,7 +90,7 @@ typedef struct  s_player
 #define		L_COLOR 0x0000FF
 #define		RED_COLOR 0xFF0000
 #define		VIEW  60.0
-#define 	SPEED 0.05
+#define 	SPEED 0.18
 #define 	WIDTH 800
 #define 	HEIGHT 600
 #define 	OBJECT 24
@@ -119,7 +121,7 @@ int 		cordinate_limit(int x, int y, t_data *data);
 void		the_intersects_horizontal(double ray_angle, t_player *player);
 void		horizontal_ray(t_player *player, t_pixel *pixel);
 void		draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color);
-void		drawing_wall(t_player *player, t_pixel *pixel, int i);
+void		drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle);
 
 
 
@@ -130,7 +132,15 @@ void init_tex_side(char **tex_side, int wall_side, t_player *player);
 double get_top(double wall_height);
 double get_bottom(double wall_height);
 // int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
-int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp, int tex_width, int tex_height);
+int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
+
+void draw_ceilling(double top, t_pixel* pixel, int x);
+void  draw_floor(double bottom, t_pixel *pixel, int x);
+int get_pixel_color(char *text_side, int text_x, int text_y, t_player *player);
+int get_text_x(t_player *player, double hit_point);
+int get_text_y(int text_y, double text_pos, t_player *player);
+
+int mouse_move(int x, int y, void *param);
 
 
 #endif

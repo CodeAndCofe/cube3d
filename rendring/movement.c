@@ -3,15 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:02:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/03 17:49:49 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/10 18:19:30 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
 
+
+int mouse_move(int x, int y, void *param)
+{
+	t_player *player = (t_player *)param;
+	(void)y;
+	double degree;
+
+	degree = ((x * 360) / (WIDTH * 1.2));
+	// player->radiant = degree_to_radiant(stay_inside(degree));
+	player->radiant = degree_to_radiant((degree));
+
+	return (0);
+}
 
 void	go_forward(t_player *player)
 {

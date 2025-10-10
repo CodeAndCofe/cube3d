@@ -10,7 +10,9 @@ SRCS2 = \
 	rendring/mlx_inputs.c\
 	rendring/movement.c\
 	rendring/helper.c\
-	rendring/drawing_wall.c
+	rendring/drawing_wall.c\
+	texture/load_text.c\
+	texture/load_texture_utils1.c
 
 SRCS = \
 	main.c \

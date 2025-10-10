@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/09 14:59:17 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/10 14:50:18 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,26 @@ void	where_is_facing(double angle, t_player *player)
 	if (angle > 0 && angle < M_PI)
 	{
 		player->facing_down = 1;
-		player->direction = SOTH;
 		player->facing_up = -1;
 	}
 	else
 	{
-		player->direction = NORTH;
 		player->facing_down = -1;
 		player->facing_up = 1;
 	}
 	if (angle < 0.5 * M_PI || angle > 1.5 * M_PI)
 	{
-		player->direction = EAST;
 		player->facing_right = 1;
 		player->facing_left = -1;
 	}
 	else
 	{
-		player->direction = WEAST;
 		player->facing_right = -1;
 		player->facing_left = 1;
 	}
 }
 
-void	the_intersects_horizontal(double ray_angle, t_player *player)
+void	the_intersects_horizontal(double ray_angle, t_player *player)// find intersactx and intersacty in cordinate
 {
 	player->h_intery = floor(player->y) * OBJECT;
 	if (player->facing_down == 1)
@@ -79,21 +75,19 @@ void	the_intersects_vertical(double ray_angle, t_player *player)
 void	horizontal_ray(t_player *player, t_pixel *pixel)
 {
 	(void) pixel;
-	double	horizontal_x = player->h_interx;
-	double	horizontal_y = player->h_intery;
+	double		horizontal_x;
+	double		horizontal_y;
 
+	horizontal_x = player->h_interx;
+	horizontal_y = player->h_intery;
 	player->h_wall = 0;
-
-	// Apply -1 only once if facing up
 	if (player->facing_up == 1)
-		horizontal_y -= 0.0001;
-
+		horizontal_y -= 1;
 	while (1)
 	{
 		if (the_limit(horizontal_x, horizontal_y) == 1
 			|| cordinate_limit(horizontal_x / OBJECT, horizontal_y / OBJECT, player->data))
 			return ;
-
 		if (player->data->maps[(int)(horizontal_y / OBJECT)][(int)(horizontal_x / OBJECT)] == '1')
 		{
 			player->h_wall_hit_x = horizontal_x;
@@ -109,22 +103,20 @@ void	horizontal_ray(t_player *player, t_pixel *pixel)
 void	vertical_ray(t_player *player, t_pixel *pixel)
 {
 	(void) pixel;
-	double	vertical_x = player->v_interx;
-	double	vertical_y = player->v_intery;
+	double		vertical_x;
+	double		vertical_y;
 
+	vertical_x = player->v_interx;
+	vertical_y = player->v_intery;
 	player->v_wall = 0;
-
-	// Apply -1 only once if facing left
 	if (player->facing_left == 1)
-		vertical_x -= 0.0001;
-
+		vertical_x -= 1;
 	while (1)
 	{
 		if (the_limit(vertical_x, vertical_y) == 1
-			|| cordinate_limit(vertical_x / OBJECT, vertical_y / OBJECT, player->data))
+			|| cordinate_limit((vertical_x / OBJECT), (vertical_y / OBJECT), player->data))
 			return ;
-
-		if (player->data->maps[(int)(vertical_y / OBJECT)][(int)(vertical_x / OBJECT)] == '1')
+		if (player->data->maps[(int)(vertical_y / OBJECT)][(int)((vertical_x) / OBJECT)] == '1')
 		{
 			player->v_wall_hit_x = vertical_x;
 			player->v_wall_hit_y = vertical_y;
@@ -133,5 +125,5 @@ void	vertical_ray(t_player *player, t_pixel *pixel)
 		}
 		vertical_x += player->v_xsteps;
 		vertical_y += player->v_ysteps;
-	}
+	} 
 }

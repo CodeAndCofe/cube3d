@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:54 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/02 18:18:38 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/02 13:59:37 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int valid_map(t_data *data)
         return (1);
     return (0);
 }
-
 void print_parsed_header(t_data *data)
 {
     int i;

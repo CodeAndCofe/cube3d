@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:26:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/09 14:15:31 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/10 19:18:13 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,24 @@ void check_the_small_distance(t_player *player)
         player->distance = h_distance;
         player->hitx = player->h_wall_hit_x;
         player->hity = player->h_wall_hit_y;
+        if (player->facing_up == 1)
+            player->wall_side = 0;//no
+        else
+            player->wall_side = 1;//daha so
     }
     else
     {
         player->distance = v_distance;
         player->hitx = player->v_wall_hit_x;
         player->hity = player->v_wall_hit_y;
+        if (player->facing_right == 1)
+            player->wall_side = 2;//ea
+        else
+            player->wall_side = 3;//we
     }
+
+    player->hit_point = player->hitx - (int)player->hitx;
+    player->hit_point = player->hity - (int)player->hity;
 }
 
 
@@ -59,7 +70,7 @@ void	draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color)
 		}
 		i++;
 	}
-}
+} 
 
 
 void	draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
@@ -71,8 +82,10 @@ void	draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 	horizontal_ray(player, pixel);
 	the_intersects_vertical(ray_angle, player);
 	vertical_ray(player, pixel);
+	// check_the_small_distance(player, ray_angle);
 	check_the_small_distance(player);
-	drawing_wall(player, pixel, i);
+
+	drawing_wall(player, pixel, i, ray_angle);
 	return ;
 }
 
@@ -85,6 +98,7 @@ void	player_view(t_pixel *pixel, t_player *player)
 	ray_angle = player->radiant - degree_to_radiant(VIEW / 2);
 	while (i < WIDTH)
 	{
+
 		draw_line(pixel, player, ray_angle, i);
 		ray_angle += degree_to_radiant(VIEW) / WIDTH;
 		i++;

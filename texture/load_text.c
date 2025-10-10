@@ -6,9 +6,13 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/09/28 13:33:26 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/10 17:24:24 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
+// 3adiiiiiiia
 
 #include "ex_cub.h"
 
@@ -47,6 +51,7 @@ int load_texture(t_player *player)
     if (!player->data->no_address || !player->data->so_address ||
         !player->data->we_address || !player->data->ea_address)
             return (1);
+
     return (0);
 }
 
@@ -66,12 +71,11 @@ void init_tex_side(char **tex_side, int wall_side, t_player *player)
         
 }
 
-
 double get_top(double wall_height)
 {
     double top;
 
-    top = (HIGTH / 2) - (wall_height / 2);
+    top = (HEIGHT / 2) - (wall_height / 2);
     if(top < 0)
         top = 0;
     return (top);
@@ -81,18 +85,16 @@ double get_bottom(double wall_height)
 {
     double bottom;
 
-    bottom = (HIGTH / 2) + (wall_height / 2);
-    if (bottom >= HIGTH)
-        bottom = HIGTH - 1;
+    bottom = (HEIGHT / 2) + (wall_height / 2);
+    if (bottom >= HEIGHT)
+        bottom = HEIGHT - 1;
     return (bottom);
 }
 
 
-int get_texture_pixel(char *addr, int x, int y, int tex_line_len, int tex_bpp, int tex_width, int tex_height)
+int get_texture_pixel(char *addr, int x, int y, int tex_line_len, int tex_bpp)
 {
-    if (!addr || x >= tex_width || y >= tex_height || x < 0 || y < 0)
-        return (0x808080);
-    
-    int offset = (y * tex_line_len) + (x * (tex_bpp / 8));
+    int offset;
+    offset = (y * tex_line_len) + (x * (tex_bpp / 8));
     return (*(int*)(addr + offset));
 }

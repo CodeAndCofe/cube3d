@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:55:07 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/08 18:05:08 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:57:41 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
 
 	// draw_map_in_two_dimension(pixel, player);
 	// draw_player(pixel, player, OBJECT / 2);
+    load_texture(player);
 	player_view(pixel, player);
 	mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, pixel->img, 0, 0);// put image into window
 	return (1);

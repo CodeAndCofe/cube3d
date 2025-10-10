@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:12 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/09/30 10:16:07 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:00:31 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int pars_line_helper(char *line, int *type, char **path, t_data *data)
     }
     *path = ft_strdup(&line[j]);
     if (!*path)
-        return (1);  
+        return 1;  
     return (0); 
 }
 
