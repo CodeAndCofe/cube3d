@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:26:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/10 19:18:13 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/12 11:13:33 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,24 @@ void check_the_small_distance(t_player *player)
             player->wall_side = 0;//no
         else
             player->wall_side = 1;//daha so
+		player->hit_point = fmod(player->hitx, OBJECT) / OBJECT;
+		player->is_door = player->data->h_door;
     }
     else
     {
         player->distance = v_distance;
         player->hitx = player->v_wall_hit_x;
         player->hity = player->v_wall_hit_y;
+		player->is_door = player->data->v_door;
         if (player->facing_right == 1)
             player->wall_side = 2;//ea
         else
             player->wall_side = 3;//we
+		player->hit_point = fmod(player->hity, OBJECT) / OBJECT;
     }
-
-    player->hit_point = player->hitx - (int)player->hitx;
-    player->hit_point = player->hity - (int)player->hity;
+	if (player->is_door == 1)
+		player->wall_side = 4;
 }
-
 
 void	draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color)
 {
@@ -79,9 +81,9 @@ void	draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 	ray_angle = reset_radiant(ray_angle);
 	where_is_facing(ray_angle, player);
 	the_intersects_horizontal(ray_angle, player);
-	horizontal_ray(player, pixel);
+	horizontal_ray(player, pixel);// add door
 	the_intersects_vertical(ray_angle, player);
-	vertical_ray(player, pixel);
+	vertical_ray(player, pixel);// add door
 	// check_the_small_distance(player, ray_angle);
 	check_the_small_distance(player);
 

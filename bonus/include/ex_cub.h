@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/10 18:12:29 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/12 13:58:23 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct  s_player
 	int a;
 	int	left;
 	int	right;
+		int is_door;
 }	t_player;
 
 
@@ -134,13 +135,18 @@ double get_bottom(double wall_height);
 // int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
 int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
 
-void draw_ceilling(double top, t_pixel* pixel, int x);
-void  draw_floor(double bottom, t_pixel *pixel, int x);
+void draw_ceilling(double top, t_pixel* pixel, int x, t_player *player);
+void  draw_floor(double bottom, t_pixel *pixel, int x, t_player *player);
 int get_pixel_color(char *text_side, int text_x, int text_y, t_player *player);
 int get_text_x(t_player *player, double hit_point);
-int get_text_y(int text_y, double text_pos, t_player *player);
+int get_text_y(double tex_height, double text_pos, t_player *player);
 
 int mouse_move(int x, int y, void *param);
+
+int	event(int keycode, t_player *player);
+int open_door(int keycode, void *param);
+void load_text_animation(t_player *player);
+void display_animation(t_player *player, int *counter);
 
 
 #endif

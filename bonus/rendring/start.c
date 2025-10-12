@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:38:14 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/10 19:18:06 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/12 12:06:07 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	mlx_action(t_player *player)
 {
 	mlx_hook(player->mlx->win_mlx, 2, 1L<<0, event_listener, player);
+	// mlx_hook(player->mlx->win_mlx, 2, 1L<<0, event, player);
 	mlx_hook(player->mlx->win_mlx, 3, 1L<<1, event_realise, player);
 	mlx_loop_hook(player->mlx->mlx, render, player);
 	mlx_hook(player->mlx->win_mlx, 6, 1L<<6 , mouse_move, player);

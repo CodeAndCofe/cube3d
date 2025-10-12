@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/10 14:50:18 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/12 13:38:27 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,31 @@ void	the_intersects_vertical(double ray_angle, t_player *player)
 		player->v_ysteps *= -1;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void	horizontal_ray(t_player *player, t_pixel *pixel)
 {
 	(void) pixel;
 	double		horizontal_x;
 	double		horizontal_y;
+	char cell;
 
 	horizontal_x = player->h_interx;
 	horizontal_y = player->h_intery;
@@ -88,23 +108,38 @@ void	horizontal_ray(t_player *player, t_pixel *pixel)
 		if (the_limit(horizontal_x, horizontal_y) == 1
 			|| cordinate_limit(horizontal_x / OBJECT, horizontal_y / OBJECT, player->data))
 			return ;
-		if (player->data->maps[(int)(horizontal_y / OBJECT)][(int)(horizontal_x / OBJECT)] == '1')
+		cell = player->data->maps[(int)(horizontal_y / OBJECT)][(int)(horizontal_x / OBJECT)];
+		if (cell == '1' || cell == 'D')
 		{
+			if (cell == 'D')
+				player->data->h_door = 1;
+			else
+				player->data->h_door = 0;
 			player->h_wall_hit_x = horizontal_x;
 			player->h_wall_hit_y = horizontal_y;
 			player->h_wall = 1;
 			break;
+		}
+		else if (cell == 'd')
+		{
+			horizontal_x += player->h_xsteps;
+			horizontal_y += player->h_ysteps;			
+			continue;
 		}
 		horizontal_x += player->h_xsteps;
 		horizontal_y += player->h_ysteps;
 	}
 }
 
+
+
+
 void	vertical_ray(t_player *player, t_pixel *pixel)
 {
 	(void) pixel;
 	double		vertical_x;
 	double		vertical_y;
+	char cell;
 
 	vertical_x = player->v_interx;
 	vertical_y = player->v_intery;
@@ -116,14 +151,26 @@ void	vertical_ray(t_player *player, t_pixel *pixel)
 		if (the_limit(vertical_x, vertical_y) == 1
 			|| cordinate_limit((vertical_x / OBJECT), (vertical_y / OBJECT), player->data))
 			return ;
-		if (player->data->maps[(int)(vertical_y / OBJECT)][(int)((vertical_x) / OBJECT)] == '1')
+		cell = player->data->maps[(int)(vertical_y / OBJECT)][(int)((vertical_x) / OBJECT)];
+		if (cell == '1' || cell == 'D')
 		{
+			if (cell == 'D')
+				player->data->v_door = 1;
+			else
+				player->data->v_door = 0;
 			player->v_wall_hit_x = vertical_x;
 			player->v_wall_hit_y = vertical_y;
 			player->v_wall = 1;
 			break;
 		}
+		else if (cell == 'd')
+		{
+			vertical_x += player->v_xsteps;
+			vertical_y += player->v_ysteps;		
+			continue;
+		}
 		vertical_x += player->v_xsteps;
 		vertical_y += player->v_ysteps;
 	} 
 }
+

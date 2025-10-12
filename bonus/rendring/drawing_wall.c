@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:05:59 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/10 17:58:45 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/11 18:53:48 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,40 @@ static void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, 
     int color;
     double tex_step;
     double tex_pos;
+    double tex_height;
+
 
     top = get_top(wall_height);
     bottom = get_bottom(wall_height);
-    text_x = get_text_x(player, player->hit_point);//possition x dyal text
     init_tex_side(&text_side, wall_side, player);// kan init wxmn side wall img khasni njib 
-    tex_step = (double)player->data->tex_height / wall_height;//xhal mn pixel f wall l kola pixel f text 
+    if (player->wall_side == 4)
+    {
+        text_x = (int)(player->hit_point * player->data->door_tex_width);
+        if (text_x >= player->data->door_tex_width)
+            text_x = player->data->door_tex_width - 1;
+        if (text_x < 0)
+            text_x = 0;
+        tex_height = player->data->door_tex_height;
+    }
+    else 
+    {
+        text_x = get_text_x(player, player->hit_point);//possition x dyal text
+        tex_height = player->data->tex_height;
+    }
+    tex_step = (double)tex_height / wall_height;//xhal mn pixel f wall l kola pixel f text 
     tex_pos = (top - HEIGHT / 2 + wall_height / 2) * tex_step;//possiton y dyal text
     i = top;
     while (i < bottom)
     {
-        text_y = get_text_y(text_y, tex_pos, player);
+        text_y = get_text_y(tex_height, tex_pos, player);
         color = get_pixel_color(text_side, text_x, text_y, player);
         my_mlx_pixel_put(pixel, x, i,color);
         tex_pos += tex_step;
         i++;
     }
-    draw_ceilling(top, pixel, x);//
-    draw_floor(bottom, pixel, x);
+    draw_ceilling(top, pixel, x, player);//
+    draw_floor(bottom, pixel, x, player);
 }
-
 
 
 void	drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle)
