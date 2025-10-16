@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:05:59 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/11 18:53:48 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 21:01:21 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, 
 
     top = get_top(wall_height);
     bottom = get_bottom(wall_height);
-    init_tex_side(&text_side, wall_side, player);// kan init wxmn side wall img khasni njib 
+    init_tex_side(&text_side, wall_side, player);
     if (player->wall_side == 4)
     {
         text_x = (int)(player->hit_point * player->data->door_tex_width);
@@ -45,11 +45,11 @@ static void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, 
     }
     else 
     {
-        text_x = get_text_x(player, player->hit_point);//possition x dyal text
+        text_x = get_text_x(player, player->hit_point);
         tex_height = player->data->tex_height;
     }
-    tex_step = (double)tex_height / wall_height;//xhal mn pixel f wall l kola pixel f text 
-    tex_pos = (top - HEIGHT / 2 + wall_height / 2) * tex_step;//possiton y dyal text
+    tex_step = (double)tex_height / wall_height;
+    tex_pos = (top - HEIGHT / 2 + wall_height / 2) * tex_step;
     i = top;
     while (i < bottom)
     {
@@ -59,7 +59,7 @@ static void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, 
         tex_pos += tex_step;
         i++;
     }
-    draw_ceilling(top, pixel, x, player);//
+    draw_ceilling(top, pixel, x, player);
     draw_floor(bottom, pixel, x, player);
 }
 
@@ -67,8 +67,8 @@ static void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, 
 void	drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle)
 {
     double  correct_distance = player->distance * cos(ray_angle - player->radiant);
-	double	projectplane_distnace  = (WIDTH / 2) / tan(degree_to_radiant(VIEW / 2));// project plane distance its (opssite / tan (a) == adjacent)
-	double	wall_hieght = ((double)OBJECT / correct_distance) * projectplane_distnace;// wall hight in project plane view
+	double	projectplane_distnace  = (WIDTH / 2) / tan(degree_to_radiant(VIEW / 2));
+	double	wall_hieght = ((double)OBJECT / correct_distance) * projectplane_distnace;
 	draw_wall(wall_hieght, player->wall_side, pixel, i, player);
 
 }

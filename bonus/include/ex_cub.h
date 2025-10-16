@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/14 17:53:29 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 21:04:00 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ typedef struct s_mlx
 	void    *mlx;
 	void    *win_mlx;  
 }t_mlx;
+
+typedef	struct	s_mini
+{
+	int		start_x;
+	int		start_y;
+	int		end_x;
+	int		end_y;
+	char	tile;
+}t_mini;
 
 typedef struct  s_player
 {
@@ -79,7 +88,10 @@ typedef struct  s_player
 		int is_door;
 }	t_player;
 
-
+#define		COLLISION_RADIUS 0.2
+#define 	MINI_RADIUS 6 
+#define		M_SIZE 170
+#define		TILE_SIZE 12
 #define		NORTH 0
 #define		WEAST 1
 #define		SOTH  2

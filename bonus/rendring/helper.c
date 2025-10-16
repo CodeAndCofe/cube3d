@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/14 17:45:45 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 21:06:55 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	where_is_facing(double angle, t_player *player)
 	}
 }
 
-void	the_intersects_horizontal(double ray_angle, t_player *player)// find intersactx and intersacty in cordinate
+void	the_intersects_horizontal(double ray_angle, t_player *player)
 {
 	player->h_intery = floor(player->y) * OBJECT;
 	if (player->facing_down == 1)
@@ -72,25 +72,6 @@ void	the_intersects_vertical(double ray_angle, t_player *player)
 		player->v_ysteps *= -1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void	horizontal_ray(t_player *player, t_pixel *pixel)
 {
 	(void) pixel;
@@ -102,7 +83,7 @@ void	horizontal_ray(t_player *player, t_pixel *pixel)
 	horizontal_y = player->h_intery;
 	player->h_wall = 0;
 	if (player->facing_up == 1)
-		horizontal_y -= 0.1;
+		horizontal_y -= 0.01;
 	while (1)
 	{
 		if (the_limit(horizontal_x, horizontal_y) == 1
@@ -131,9 +112,6 @@ void	horizontal_ray(t_player *player, t_pixel *pixel)
 	}
 }
 
-
-
-
 void	vertical_ray(t_player *player, t_pixel *pixel)
 {
 	(void) pixel;
@@ -145,7 +123,7 @@ void	vertical_ray(t_player *player, t_pixel *pixel)
 	vertical_y = player->v_intery;
 	player->v_wall = 0;
 	if (player->facing_left == 1)
-		vertical_x -= 0.1;
+		vertical_x -= 0.01;
 	while (1)
 	{
 		if (the_limit(vertical_x, vertical_y) == 1
