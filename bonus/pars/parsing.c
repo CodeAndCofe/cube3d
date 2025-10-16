@@ -6,13 +6,12 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:54 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/07 12:46:33 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:08:28 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "ex_cub.h"
-
 
 int valid_map(t_data *data)
 {
@@ -30,50 +29,14 @@ int valid_map(t_data *data)
     if (player_der != 1)
         return (1);
     if (valid_dor(data) != 0)
+    {
+        printf("doooor\n");
         return (1);
+    }
     
     if (map_closed(data) != 0)
         return (1);
     return (0);
-}
-
-void print_parsed_header(t_data *data)
-{
-    int i;
-
-    printf("🌄 Textures:\n");
-    printf("   NO: %s\n", data->no_path);
-    printf("   SO: %s\n", data->so_path);
-    printf("   WE: %s\n", data->we_path);
-    printf("   EA: %s\n", data->ea_path);
-
-    printf("🎨 Colors:\n");
-    printf("   Floor: %d\n", data->f_color);
-    printf("   Ceiling: %d\n", data->c_color);
-
-    printf("✅ Header Validation:\n");
-    printf("   NO found: %d\n", data->found.found_no);
-    printf("   SO found: %d\n", data->found.found_so);
-    printf("   WE found: %d\n", data->found.found_we);
-    printf("   EA found: %d\n", data->found.found_ea);
-    printf("   F  found: %d\n", data->found.found_f);
-    printf("   C  found: %d\n", data->found.found_c);
-
-    // Print the map if it exists
-    printf("🗺️  Map (%d lines):\n", data->map_lines);
-    if (data->maps)
-    {
-        i = 0;
-        while (i < data->map_lines)
-        {
-            printf("   [%02d]: %s\n", i, data->maps[i]);
-            i++;
-        }
-    }
-    else
-    {
-        printf("   No map loaded yet\n");
-    }
 }
 
 int pars_map(char *line, t_data *data)
@@ -85,13 +48,13 @@ int pars_map(char *line, t_data *data)
         return 1;
     if (pars_line_helper(line, &type, &path, data) != 0)
         return (1);
+    if (map_start(data, type))
+        return (1);
     if (type == 8)
     {
         data->map_start = 1;
-        if (data->map_index == 0)
-            data->maps = malloc(sizeof(char *) * (data->map_lines + 1));
-            if (!data->maps)
-                return (1);
+        if (init_map(data))
+            return (1);
         data->maps[data->map_index] = ft_strdup(line);
         if (!data->maps[data->map_index])
             return (1);
@@ -99,8 +62,6 @@ int pars_map(char *line, t_data *data)
         if (data->map_index == data->map_lines)
             data->maps[data->map_index] = NULL;
     }
-    else if (data->map_start == 1 && type != 8)
-        return (1);
     return (0);
 }
 
@@ -113,10 +74,9 @@ int pars_line(char *line, t_data *data)
         return (1);
     if (pars_line_helper(line, &type, &path, data) != 0)
         return (1);
-
     if ((type >= 2 && type <= 5) || type == 9)
     {    
-        if (is_valid_extension(path, ".xpm"))
+        if (is_valid_extension((remove_space(path)), ".xpm") != 0)
         {
             printf("invalid xpm file extension\n");
             free(path);
@@ -134,6 +94,7 @@ int pars_line(char *line, t_data *data)
     return (0);
 }
 
+
 int open_read(t_data *data, char *file_name, int flag)
 {
     int fd;
@@ -149,27 +110,13 @@ int open_read(t_data *data, char *file_name, int flag)
     line = get_next_line(fd);
     while (line)
     {
-        remove_newline(line); 
-        if (flag == 1) 
+        if (start_parsing(line, data,fd, flag) != 0)
         {
-            if (pars_line(line, data) == 1)
-            {
-                free(line);
-                close(fd);
-                return (1);
-            }
+            free(line);
+            close(fd);
+            return (1);
         }
-        else if (flag == 2)
-        {
-            if (pars_map(line, data) == 1)
-            {
-                free(line);
-                close(fd);
-                return (1);
-            }
-        } 
-        free(line);
-        line = get_next_line(fd); 
+        (1) && (free(line), line = get_next_line(fd)); 
     }
     close(fd);
     if (valid_file(data) == 1)

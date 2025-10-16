@@ -18,8 +18,10 @@ SRCS2 = \
 SRCS = \
 	main.c \
 	pars/parsing.c \
+	pars/parsing_helper.c \
 	pars/utils1.c \
 	pars/utils2.c \
+	pars/utils2_helper.c \
 	pars/utils3.c \
 	pars/utils4.c \
 	Libft/ft_atoi.c \

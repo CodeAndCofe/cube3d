@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 13:32:50 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/12 15:46:30 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:57:57 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void  draw_floor(double bottom, t_pixel *pixel, int x, t_player *player)
     i = (int)bottom;
     while (i < HEIGHT)
     {
-        my_mlx_pixel_put(pixel, x, i, player->data->c_color);
+        my_mlx_pixel_put(pixel, x, i, player->data->f_color);
         i++;
     }
 }

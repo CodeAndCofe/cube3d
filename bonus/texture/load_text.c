@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/12 13:59:12 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:43:34 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int load_texture(t_player *player)
         !player->data->we_address || !player->data->ea_address)
             return (1);
     load_door(player);
-    load_text_animation(player);
+    // load_text_animation(player);
 
     return (0);
 }
@@ -79,8 +79,7 @@ void init_tex_side(char **tex_side, int wall_side, t_player *player)
     else if (wall_side == 3)
         *tex_side = player->data->ea_address;
     else if (wall_side == 4)
-        *tex_side = player->data->door_address;
-        
+        *tex_side = player->data->door_address;   
 }
 
 double get_top(double wall_height)

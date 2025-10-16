@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 14:16:28 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:28:23 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int    render(t_player *player)
 	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
 	draw_map(player->pixel, player->mlx, player);
 	frame_counter++;
-	display_animation(player, &frame_counter);
+	// display_animation(player, &frame_counter);
     action(player);
     return (0);
 }

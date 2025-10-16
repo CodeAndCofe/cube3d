@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 13:38:27 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:45:45 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	horizontal_ray(t_player *player, t_pixel *pixel)
 	horizontal_y = player->h_intery;
 	player->h_wall = 0;
 	if (player->facing_up == 1)
-		horizontal_y -= 1;
+		horizontal_y -= 0.1;
 	while (1)
 	{
 		if (the_limit(horizontal_x, horizontal_y) == 1
@@ -145,7 +145,7 @@ void	vertical_ray(t_player *player, t_pixel *pixel)
 	vertical_y = player->v_intery;
 	player->v_wall = 0;
 	if (player->facing_left == 1)
-		vertical_x -= 1;
+		vertical_x -= 0.1;
 	while (1)
 	{
 		if (the_limit(vertical_x, vertical_y) == 1

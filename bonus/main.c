@@ -6,10 +6,9 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/09/27 17:18:35 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:57:14 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub.h"
 
@@ -59,10 +58,7 @@ int main(int ac, char **av)
     {
         return (1);//hna khasni nzid free data
     }
-    print_parsed_header(data);
+    // print_parsed_header(data);
     start(data);
     return (0);
 }
-
-
-

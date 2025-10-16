@@ -6,73 +6,22 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:03 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/07 12:48:29 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:12:38 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-
 int store_data(int type, t_data *data, char *path)
 {
     if (!data || !path)
         return (1);
-        
-    if (type == 2)
-    {
-        if (data->found.found_no == 1)
-            return(1);
-        data->found.found_no = 1;
-        data->no_path = ft_strdup(path);
-        if (!data->no_path)
-            return (1);
-    }
-    else if (type == 3)
-    {   
-
-        if (data->found.found_so == 1)
-            return(1);
-        data->found.found_so = 1;
-        data->so_path = ft_strdup(path);
-        if (!data->so_path)
-            return (1);
-    }
-    else if (type == 4) //we
-    {    
-        if (data->found.found_we == 1)
-            return(1);
-        data->found.found_we = 1;
-        data->we_path = ft_strdup(path);
-        if (!data->we_path)
-            return (1);
-    }
-    else if (type == 5) // EA
-    {   
-        if (data->found.found_ea == 1)
-            return(1);
-        data->found.found_ea = 1;
-        data->ea_path = ft_strdup(path);
-        if (!data->ea_path)
-            return (1);
-    }
-    else if (type == 6) // FLOOR COLOR
-    {  
-        if (data->found.found_f == 1)
-            return(1);
-        data->found.found_f = 1;
-        data->f_color = convert_to_rgb(path);
-        if (data->f_color == 1)
-            return (1);
-    }
-    else if (type == 7) // CEILLING COLOR
-    {   
-        if (data->found.found_c == 1)
-            return(1);
-        data->found.found_c = 1;
-        data->c_color = convert_to_rgb(path);
-        if (data->c_color == 1)
-            return (1);
-    }
+    if (store_no_so_path(type, data, path) == 1)
+        return (1);
+    else if (store_we_ea_path(type, data, path) == 1)
+        return (1);
+    else if (store_f_c_path(type, data, path) == 1)
+        return (1);
     else if (type == 9)
     {   
         if (data->found.found_door == 1)
@@ -89,31 +38,29 @@ int store_data(int type, t_data *data, char *path)
 int is_valid_extension(char *path, char *extension)// X 0 1 return 
 {
     int len;
+    int fd;
 
     if (!path || !extension)
         return (1);
-    len = ft_strlen(path);
-    if (len < 5)
+    fd = open(path, O_RDONLY);
+    if (fd == -1)
         return (1);
-    if (ft_strncmp(&path[len - 4], extension, 4) == 0)
-        return (0);
-    return (1);
+
+    len = ft_strlen(path);
+    if (ft_strncmp(&path[len - 4], extension, 4) != 0)
+        return (1);
+    close(fd);
+    return (0);
 }
 
-
-int get_type(char *line, t_data *data)
+int get_type(char *line)
 {
-    int i;
-    (void)data;
-
-    i = 0;
-    if (!line || line[0] == '\0')
+    if (!line)
         return (1);
-    // if (line[0] == '\0' && data->map_start == 1)
-    //     return (9);
-    while (line[i] == ' ')
-        i++;
-    if(ft_strncmp("NO", line, 2) == 0 && ft_strlen(line) == 2)
+
+    if (line[0] == '\0')
+        return (10);
+    else if(ft_strncmp("NO", line, 2) == 0 && ft_strlen(line) == 2)
         return (2);
     else if(ft_strncmp(line, "SO", 2) == 0 && ft_strlen(line) == 2)
         return (3);

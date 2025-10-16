@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 13:58:23 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/14 17:53:29 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct  s_player
 #define		VIEW  60.0
 #define 	SPEED 0.18
 #define 	WIDTH 800
-#define 	HEIGHT 600
+#define 	HEIGHT 500
 #define 	OBJECT 24
 #define		WIDTH_PER_PIXEL 1.5
 #define		M_INT_MAX 2147483646;

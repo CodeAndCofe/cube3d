@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 11:10:25 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:10:46 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_data
 {
     char **maps;
     int map_start;
+    int pre_type;
     int map_lines;
     int map_index;
     char *no_path;
@@ -112,7 +113,6 @@ int check_file(char *line);
 int pars_line(char *line, t_data *data);
 int store_data(int type, t_data *data, char *path);
 int is_valid_extension(char *path, char *name);
-int get_type(char *line, t_data *data);
 void remove_newline(char *line);
 int print_error(void);
 
@@ -130,14 +130,25 @@ int valid_chars(char *line, int *player, int flag);
 int all_walls(char *line);
 int map_closed(t_data *data);
 int check_num(char *num);
-
+int valid_space(char **holder);
+int map_start(t_data *data, int type);
+int init_map(t_data *data);
 
 int valid_dor(t_data *data);
 void free_data(t_data *data);
 void free_holder(char **holder);
+void *remove_space(char *line);
+void	extract_path(char *line, int *i, int *j);
+int ft_isspace(char c);
 
+int	start_parsing(char *line, t_data *data, int fd, int flag);
+int	store_no_so_path(int type, t_data *data, char *path);
+int	store_we_ea_path(int type, t_data *data, char *path);
+int	store_f_c_path(int type, t_data *data, char *path);
 
-void print_parsed_header(t_data *data);
+int get_type(char *line);
+
+// void print_parsed_header(t_data *data);
 
 
 ////////////////////////////libft////////////////////////////
