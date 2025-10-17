@@ -3,54 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   view.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:26:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 11:13:33 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:45:17 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
 
-// i need to check that:
-double	calculate_distance(double px, double py, double dx, double dy)
+
+void	check_deistance(t_player *player, double h_distance, double v_distance)
 {
-	return (sqrt((dx - px) * (dx - px) + (dy - py) * (dy - py)));
+	if (h_distance < v_distance)
+	{
+		player->distance = h_distance;
+		player->hitx = player->h_wall_hit_x;
+		player->hity = player->h_wall_hit_y;
+		if (player->facing_up == 1)
+			player->wall_side = 0;//no
+		else
+			player->wall_side = 1;//daha so
+		player->hit_point = fmod(player->hitx, OBJECT) / OBJECT;
+		player->is_door = player->data->h_door;
+	}
+	else
+	{
+		player->distance = v_distance;
+		player->hitx = player->v_wall_hit_x;
+		player->hity = player->v_wall_hit_y;
+		player->is_door = player->data->v_door;
+		if (player->facing_right == 1)
+			player->wall_side = 2;//ea
+		else
+			player->wall_side = 3;//we
+		player->hit_point = fmod(player->hity, OBJECT) / OBJECT;
+	}
 }
 
 void check_the_small_distance(t_player *player)
 {
-    double h_distance = M_INT_MAX;
-    double v_distance = M_INT_MAX;
+	double h_distance;
+	double v_distance;
 
-    if (player->h_wall == 1)
-        h_distance = calculate_distance(player->x * OBJECT, player->y * OBJECT, player->h_wall_hit_x, player->h_wall_hit_y);
-    if (player->v_wall == 1)
-        v_distance = calculate_distance(player->x * OBJECT, player->y * OBJECT, player->v_wall_hit_x, player->v_wall_hit_y);
-    if (h_distance < v_distance)
-    {
-        player->distance = h_distance;
-        player->hitx = player->h_wall_hit_x;
-        player->hity = player->h_wall_hit_y;
-        if (player->facing_up == 1)
-            player->wall_side = 0;//no
-        else
-            player->wall_side = 1;//daha so
-		player->hit_point = fmod(player->hitx, OBJECT) / OBJECT;
-		player->is_door = player->data->h_door;
-    }
-    else
-    {
-        player->distance = v_distance;
-        player->hitx = player->v_wall_hit_x;
-        player->hity = player->v_wall_hit_y;
-		player->is_door = player->data->v_door;
-        if (player->facing_right == 1)
-            player->wall_side = 2;//ea
-        else
-            player->wall_side = 3;//we
-		player->hit_point = fmod(player->hity, OBJECT) / OBJECT;
-    }
+	h_distance = M_INT_MAX;
+	v_distance = M_INT_MAX;
+	if (player->h_wall == 1)
+		h_distance = calculate_distance(player->x * OBJECT, player->y * OBJECT, player->h_wall_hit_x, player->h_wall_hit_y);
+	if (player->v_wall == 1)
+		v_distance = calculate_distance(player->x * OBJECT, player->y * OBJECT, player->v_wall_hit_x, player->v_wall_hit_y);
+	check_deistance(player, h_distance, v_distance);
 	if (player->is_door == 1)
 		player->wall_side = 4;
 }
@@ -74,19 +76,15 @@ void	draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color)
 	}
 } 
 
-
 void	draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 {
-	
 	ray_angle = reset_radiant(ray_angle);
 	where_is_facing(ray_angle, player);
 	the_intersects_horizontal(ray_angle, player);
-	horizontal_ray(player, pixel);// add door
+	horizontal_ray(player);
 	the_intersects_vertical(ray_angle, player);
-	vertical_ray(player, pixel);// add door
-	// check_the_small_distance(player, ray_angle);
+	vertical_ray(player);
 	check_the_small_distance(player);
-
 	drawing_wall(player, pixel, i, ray_angle);
 	return ;
 }

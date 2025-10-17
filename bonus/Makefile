@@ -14,7 +14,8 @@ SRCS2 = \
 	texture/load_text.c\
 	texture/load_texture_utils1.c\
 	texture/load_texture_utils2.c\
-	texture/load_text_utils.c
+	texture/load_text_utils.c\
+	rendring/intersect.c
 
 SRCS = \
 	main.c \

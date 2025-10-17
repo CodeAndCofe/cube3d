@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 11:08:35 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:41:24 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,24 @@ typedef struct s_mlx
 	void    *win_mlx;  
 }t_mlx;
 
+typedef	struct	s_wall
+{
+	double	top;
+	double	bottom;
+    double tex_step;
+    double tex_pos;
+    double tex_height;
+    char *text_side;
+    int text_x;
+    int text_y;
+    int color;
+	int x;
+}t_wall;
+
 typedef	struct	s_mini
 {
+	int		map_y;
+	int		map_x;
 	int		start_x;
 	int		start_y;
 	int		end_x;
@@ -127,7 +143,7 @@ int	        event_realise(int keycode, t_player *player);
 int	        event_listener(int keycode, t_player *player);
 void	    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
 double      degree_to_radiant(double n);
-void		vertical_ray(t_player *player, t_pixel *pixel);
+void		vertical_ray(t_player *player);
 void		the_intersects_vertical(double ray_angle, t_player *player);
 void		player_view(t_pixel *pixel, t_player *player);
 double		reset_radiant(double	angle);
@@ -135,9 +151,10 @@ void		where_is_facing(double angle, t_player *player);
 int 		the_limit(int x, int y);
 int 		cordinate_limit(int x, int y, t_data *data);
 void		the_intersects_horizontal(double ray_angle, t_player *player);
-void		horizontal_ray(t_player *player, t_pixel *pixel);
+void		horizontal_ray(t_player *player);
 void		draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color);
 void		drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle);
+double		calculate_distance(double px, double py, double dx, double dy);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/16 21:02:39 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:35:26 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	event_listener(int keycode, t_player *player)
 {
-	if (keycode == 13)// forward
+	if (keycode == 13)
 		player->w = 1;
 	else if (keycode == 1)
 		player->s = 1;

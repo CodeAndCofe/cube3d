@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:02:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/16 21:06:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:39:44 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int	is_wall(t_data *data, double x, double y)
 {
-	int map_x = (int)x;
-	int map_y = (int)y;
+	int map_x;
+	int map_y;
+
+	map_x = (int)x;
+	map_y = (int)y;
 	if (map_y < 0 || map_y >= data->map_lines)
 		return (1);
 	if (map_x < 0 || map_x >= (int)ft_strlen(data->maps[map_y]))
 		return (1);
-	if (data->maps[map_y][map_x] == '1')
+	if (data->maps[map_y][map_x] == '1' || data->maps[map_y][map_x] == 'D')
 		return (1);
 	return (0);
 }
@@ -28,7 +31,6 @@ int	is_wall(t_data *data, double x, double y)
 int	event(int keycode, t_player *player)
 {
 	event_listener(keycode, player);
-	// open_door(keycode, player);
 	return (0);
 }
 
@@ -73,7 +75,6 @@ int mouse_move(int x, int y, void *param)
 	double degree;
 
 	degree = ((x * 360) / (WIDTH));
-	// player->radiant = degree_to_radiant(stay_inside(degree));
 	player->radiant = degree_to_radiant((degree));
 	player->radiant = reset_radiant(player->radiant);
 
@@ -82,15 +83,16 @@ int mouse_move(int x, int y, void *param)
 
 void	go_forward(t_player *player)
 {
-	double new_x = player->x + cos(player->radiant) * SPEED;
-	double new_y = player->y + sin(player->radiant) * SPEED;
+	double new_x;
+	double new_y;
 
+	new_x = player->x + cos(player->radiant) * SPEED;
+	new_y = player->y + sin(player->radiant) * SPEED;
 	if (!is_wall(player->data, new_x + COLLISION_RADIUS, player->y)
 		&& !is_wall(player->data, new_x - COLLISION_RADIUS, player->y)
 		&& !is_wall(player->data, new_x, player->y + COLLISION_RADIUS)
 		&& !is_wall(player->data, new_x, player->y - COLLISION_RADIUS))
 		player->x = new_x;
-
 	if (!is_wall(player->data, player->x, new_y + COLLISION_RADIUS)
 		&& !is_wall(player->data, player->x, new_y - COLLISION_RADIUS)
 		&& !is_wall(player->data, player->x + COLLISION_RADIUS, new_y)
@@ -116,8 +118,6 @@ void	go_backward(t_player *player)
 		&& !is_wall(player->data, player->x + COLLISION_RADIUS, y)
 		&& !is_wall(player->data, player->x - COLLISION_RADIUS, y))
 		player->y = y;
-	
-	
 }
 
 void	turn(t_player	*player, int rl)

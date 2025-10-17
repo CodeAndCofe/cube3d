@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:43:27 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 15:47:05 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:37:27 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 double  degree_to_radiant(double n)
 {
     return (n * ((M_PI) / 180));
+}
+
+double	reset_radiant(double	angle)
+{
+	angle = fmod(angle, 2 * M_PI);
+	if (angle < 0)
+		angle += 2 * M_PI;
+	return (angle);
 }
 
 void    set_zero(t_player   *player)
@@ -36,8 +44,6 @@ void    set_zero(t_player   *player)
     player->h_wall_hit_y = 0;
 }
 
-
-// here i set player position and after that i set the which direction are he looking ate
 void    set_player_position_and_degree(t_player *player, char c, int j, int i)
 {
     player->x = j + 0.5;
@@ -51,10 +57,6 @@ void    set_player_position_and_degree(t_player *player, char c, int j, int i)
     else if (c == 'E')
         player->radiant = degree_to_radiant(0);
 }
-
-
-// i search here for player position (and which direction he is look ate)
-//and i pass the info to set_player_position_and_degree()
 
 void    find_player_position(t_player *player)
 {

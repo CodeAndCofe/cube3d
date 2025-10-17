@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:55:07 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/16 21:00:51 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:19:27 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,35 +57,32 @@ void	draw_player_on_minimap(t_pixel *pixel)
 
 void draw_map_in_two_dimension(t_pixel *pixel, t_player *player)
 {
-	int		map_y;
-	int		map_x;
 	t_mini	data;
 
 	data.start_y = (int)player->y - MINI_RADIUS;
 	data.start_x = (int)player->x - MINI_RADIUS;
 	data.end_x = (int)player->x + MINI_RADIUS;
 	data.end_y = (int)player->y + MINI_RADIUS;
-	map_y = data.start_y;
-	while (map_y <= data.end_y)
+	data.map_y = data.start_y;
+	while (data.map_y <= data.end_y)
 	{
-		map_x = data.start_x;
-		while (map_x <= data.end_x)
+		data.map_x = data.start_x;
+		while (data.map_x <= data.end_x)
 		{
-			if (cordinate_limit(map_x, map_y, player->data))
+			if (cordinate_limit(data.map_x, data.map_y, player->data))
 			{
-				map_x++;
+				data.map_x++;
 				continue;
 			}
-			if (player->data->maps[map_y][map_x] == '1')
-				draw_square_m(pixel, map_x - data.start_x, map_y - data.start_y, 0x444444, TILE_SIZE);
+			if (player->data->maps[data.map_y][data.map_x] == '1')
+				draw_square_m(pixel, data.map_x - data.start_x, data.map_y - data.start_y, 0x444444, TILE_SIZE);
 			else
-				draw_square_m(pixel, map_x - data.start_x, map_y - data.start_y, 0xAAAAAA, TILE_SIZE);
-			map_x ++;
+				draw_square_m(pixel, data.map_x - data.start_x, data.map_y - data.start_y, 0xAAAAAA, TILE_SIZE);
+			data.map_x ++;
 		}
-		map_y++;
+		data.map_y++;
 	}
 }
-
 
 int draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
 {
