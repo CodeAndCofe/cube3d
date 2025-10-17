@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/16 21:04:00 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:08:35 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ typedef struct  s_player
 	int	left;
 	int	right;
 		int is_door;
+
+	int	line_len;
+	int	bpp;
 }	t_player;
 
 #define		COLLISION_RADIUS 0.2
@@ -145,7 +148,7 @@ void init_tex_side(char **tex_side, int wall_side, t_player *player);
 double get_top(double wall_height);
 double get_bottom(double wall_height);
 // int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
-int get_texture_pixel(char *addr, int x, int y, int line_len, int bpp);
+int get_texture_pixel(char *addr, int x, int y, t_player *player);
 
 void draw_ceilling(double top, t_pixel* pixel, int x, t_player *player);
 void  draw_floor(double bottom, t_pixel *pixel, int x, t_player *player);
@@ -159,6 +162,7 @@ int	event(int keycode, t_player *player);
 int open_door(int keycode, void *param);
 void load_text_animation(t_player *player);
 void display_animation(t_player *player, int *counter);
+int	load_door(t_player *player);
 
 
 #endif

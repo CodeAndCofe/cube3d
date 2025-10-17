@@ -6,30 +6,32 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:02:56 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/14 16:52:37 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:35:25 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
 
-// int	check_num(char *num)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (num[i])
-// 	{
-// 		if (!ft_isdigit(num[i]))
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-// int	ft_isspace(char c)
-// {
-// 	return (c == ' ' || c == '\t');
-// }
+void	init_data(t_data *data)
+{
+	data->ea_path = NULL;
+	data->so_path = NULL;
+	data->we_path = NULL;
+	data->no_path = NULL;
+	data->door_path = NULL;
+	data->maps = NULL;
+	data->map_index = 0;
+	data->c_color = 0;
+	data->f_color = 0;
+	data->map_lines = 0;
+	data->found.found_c = 0;
+	data->found.found_f = 0;
+	data->found.found_so = 0;
+	data->found.found_we = 0;
+	data->found.found_ea = 0;
+	data->found.found_no = 0;
+	data->found.found_door = 0;
+}
 
 void	extract_path(char *line, int *i, int *j)
 {
@@ -40,11 +42,31 @@ void	extract_path(char *line, int *i, int *j)
 		(*j)++;
 }
 
-// int	valid_file(t_data *data)
-// {
-// 	if (!data->found.found_c || !data->found.found_f
-// 		|| !data->found.found_ea || !data->found.found_no
-// 		|| !data->found.found_so || !data->found.found_we)
-// 		return (1);
-// 	return (0);
-// }
+int	count_word(char **holder)
+{
+	int	i;
+
+	i = 0;
+	if (!holder)
+		return (0);
+	while (holder[i])
+		i++;
+	return (i);
+}
+
+void	*remove_space(char *line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ')
+			line[j++] = line[i];
+		i++;
+	}
+	line[j] = '\0';
+	return (line);
+}

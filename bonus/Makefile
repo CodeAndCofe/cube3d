@@ -13,6 +13,7 @@ SRCS2 = \
 	rendring/drawing_wall.c\
 	texture/load_text.c\
 	texture/load_texture_utils1.c\
+	texture/load_texture_utils2.c\
 	texture/load_text_utils.c
 
 SRCS = \
@@ -24,6 +25,7 @@ SRCS = \
 	pars/utils2_helper.c \
 	pars/utils3.c \
 	pars/utils4.c \
+	pars/utils5.c \
 	Libft/ft_atoi.c \
 	Libft/ft_alpha.c \
 	Libft/ft_lstadd_back.c \

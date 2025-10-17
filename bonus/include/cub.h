@@ -6,12 +6,11 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/16 15:10:46 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:02:34 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef CUB
+# ifndef CUB
 # define CUB
 
 #include <unistd.h>
@@ -35,75 +34,75 @@ char	*ft_strcpy1(char *dest, char *src);
 
 typedef struct s_found
 {
-    int found_so;
-    int found_no;
-    int found_we;
-    int found_ea;
-    int found_f;
-    int found_c;
-    int found_door;
+	int found_so;
+	int found_no;
+	int found_we;
+	int found_ea;
+	int found_f;
+	int found_c;
+	int found_door;
 
 }   t_found;
 
 typedef struct s_data
 {
-    char **maps;
-    int map_start;
-    int pre_type;
-    int map_lines;
-    int map_index;
-    char *no_path;
-    char *so_path;
-    char *we_path;
-    char *ea_path;
-    char *door_path;
+	char **maps;
+	int map_start;
+	int pre_type;
+	int map_lines;
+	int map_index;
+	char *no_path;
+	char *so_path;
+	char *we_path;
+	char *ea_path;
+	char *door_path;
 
 
-    int f_color;
-    int c_color;
-    int height;
-    int witth;
-    int start_pos_x;
-    int start_pos_y;
-    int palyer_direction;
-    struct s_found  found;
+	int f_color;
+	int c_color;
+	int height;
+	int witth;
+	int start_pos_x;
+	int start_pos_y;
+	int palyer_direction;
+	struct s_found  found;
 
-    void *no_texture;
-    void *so_texture;
-    void *we_texture;
-    void *ea_texture;
+	void *no_texture;
+	void *so_texture;
+	void *we_texture;
+	void *ea_texture;
 
-    char *no_address;
-    char *so_address;
-    char *we_address;
-    char *ea_address;
+	char *no_address;
+	char *so_address;
+	char *we_address;
+	char *ea_address;
 
-    int tex_with;
-    int tex_height;    
+	int tex_with;
+	int tex_height;    
 
-    int tex_bpp;       // Texture bits per pixel
-    int tex_line_len;  // Texture line length in bytes  
-    int tex_endian;
+	int tex_bpp;       // Texture bits per pixel
+	int tex_line_len;  // Texture line length in bytes  
+	int tex_endian;
 
-    char *door_tex;
-    int door_tex_width;
-    int door_tex_height;
-    int door_tex_bpp;
-    int door_tex_line_len;
-    int door_tex_endian;
+	char *door_tex;
+	int door_tex_width;
+	int door_tex_height;
+	int door_tex_bpp;
+	int door_tex_line_len;
+	int door_tex_endian;
 
 
-    char *door_address;
-    void *door_texture;
-    int h_door;
-    int v_door;
-    
-    void *frame1;
-    void *frame2;
-    int cur_frame;
-    int frame_with;
-    int frame_height;
-    int counter;
+	char *door_address;
+	void *door_texture;
+	int h_door;
+	int v_door;
+	
+	void *frame1;
+	void *frame2;
+	int cur_frame;
+	int frame_with;
+	int frame_height;
+	int counter;
 }   t_data;
 
 
@@ -145,8 +144,10 @@ int	start_parsing(char *line, t_data *data, int fd, int flag);
 int	store_no_so_path(int type, t_data *data, char *path);
 int	store_we_ea_path(int type, t_data *data, char *path);
 int	store_f_c_path(int type, t_data *data, char *path);
-
+void	extract_rgb(char **holder, int *r, int *g, int *b);
 int get_type(char *line);
+int	first_last_line(int x, t_data *data);
+int	door_validation(t_data *data, int i, int j, int	len_line);
 
 // void print_parsed_header(t_data *data);
 
@@ -173,6 +174,7 @@ int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 char			*ft_itoa(int n);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 
 int    start(t_data *data);
 int    start();
