@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:59:45 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/15 13:23:01 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:17:00 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	store_f_c_path(int type, t_data *data, char *path)
 			return (1);
 		data->found.found_f = 1;
 		data->f_color = convert_to_rgb(path);
-		if (data->f_color == 1)
+		if (data->f_color == -1)
 			return (1);
 	}
 	else if (type == 7)
@@ -92,7 +92,7 @@ int	store_f_c_path(int type, t_data *data, char *path)
 			return (1);
 		data->found.found_c = 1;
 		data->c_color = convert_to_rgb(path);
-		if (data->c_color == 1)
+		if (data->c_color == -1)
 			return (1);
 	}
 	return (0);

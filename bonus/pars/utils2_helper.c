@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:02:56 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 18:35:25 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:38:02 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	*remove_space(char *line)
 	int	i;
 	int	j;
 
+	if (!line)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (line[i])

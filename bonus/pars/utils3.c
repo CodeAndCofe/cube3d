@@ -6,13 +6,13 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 18:51:51 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:05:44 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	check_surrounded(t_data *data, int x, int y)
+int	check_surrounded(t_data *data, int x, int y)
 {
 	if (x == 0 || y == 0)
 		return (1);
@@ -23,7 +23,7 @@ static int	check_surrounded(t_data *data, int x, int y)
 	return (0);
 }
 
-static int	is_out_of_bounds(t_data *data, int x, int y)
+int	is_out_of_bounds(t_data *data, int x, int y)
 {
 	if (y >= (int)ft_strlen(data->maps[x - 1]))
 		return (1);
@@ -32,7 +32,7 @@ static int	is_out_of_bounds(t_data *data, int x, int y)
 	return (0);
 }
 
-static int	zero_next_to_space(t_data *data, int x, int y)
+int	zero_next_to_space(t_data *data, int x, int y)
 {
 	if (((x > 0) && (ft_isspace(data->maps[x - 1][y])))
 		|| ft_isspace(data->maps[x + 1][y]))
@@ -87,13 +87,8 @@ int	map_closed(t_data *data)
 			return (1);
 		while (data->maps[x][y])
 		{
-			if (first_last_line(x, data) == 1)
+			if(map_closed_helper(x, y, data) == 1)
 				return (1);
-			if ((check_surrounded(data, x, y) == 1)
-				|| (is_out_of_bounds(data, x, y) == 1)
-				|| (zero_next_to_space(data, x, y) == 1))
-				if (data->maps[x][y] == '0')
-					return (1);
 			y++;
 		}
 	}

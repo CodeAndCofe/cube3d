@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 11:02:34 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:06:21 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,76 +106,73 @@ typedef struct s_data
 }   t_data;
 
 
-int main(int ac, char **av);
-int open_read(t_data *data, char *file_name, int flag);
-int check_file(char *line);
-int pars_line(char *line, t_data *data);
-int store_data(int type, t_data *data, char *path);
-int is_valid_extension(char *path, char *name);
-void remove_newline(char *line);
-int print_error(void);
-
-void *ft_calloc(size_t count, size_t size);
-char *get_nex_line(int fd);
-int convert_to_rgb(char *color);
-int count_word(char **holder);
-void init_data(t_data *data);
-int parsing_part(t_data *data, char *file_name);
-int valid_file(t_data *data);
-int pars_map(char *line, t_data *data);
-int pars_line_helper(char *line, int *type, char **path, t_data *data);
-int valid_map(t_data *data);
-int valid_chars(char *line, int *player, int flag);
-int all_walls(char *line);
-int map_closed(t_data *data);
-int check_num(char *num);
-int valid_space(char **holder);
-int map_start(t_data *data, int type);
-int init_map(t_data *data);
-
-int valid_dor(t_data *data);
-void free_data(t_data *data);
-void free_holder(char **holder);
-void *remove_space(char *line);
+int		main(int ac, char **av);
+int		open_read(t_data *data, char *file_name, int flag);
+int		check_file(char *line);
+int		pars_line(char *line, t_data *data);
+int		store_data(int type, t_data *data, char *path);
+int		is_valid_extension(char *path, char *name);
+void	remove_newline(char *line);
+int		print_error(void);
+void	*ft_calloc(size_t count, size_t size);
+char	*get_nex_line(int fd);
+int		convert_to_rgb(char *color);
+int		count_word(char **holder);
+void	init_data(t_data *data);
+int		parsing_part(t_data *data, char *file_name);
+int		valid_file(t_data *data);
+int		pars_map(char *line, t_data *data);
+int		pars_line_helper(char *line, int *type, char **path, t_data *data);
+int		valid_map(t_data *data);
+int		valid_chars(char *line, int *player, int flag);
+int		all_walls(char *line);
+int		map_closed(t_data *data);
+int		check_num(char *num);
+int		valid_space(char **holder);
+int		map_start(t_data *data, int type);
+int		init_map(t_data *data);
+int		valid_dor(t_data *data);
+void	free_data(t_data *data);
+void	free_holder(char **holder);
+void	*remove_space(char *line);
 void	extract_path(char *line, int *i, int *j);
-int ft_isspace(char c);
-
-int	start_parsing(char *line, t_data *data, int fd, int flag);
-int	store_no_so_path(int type, t_data *data, char *path);
-int	store_we_ea_path(int type, t_data *data, char *path);
-int	store_f_c_path(int type, t_data *data, char *path);
+int		ft_isspace(char c);
+int		start_parsing(char *line, t_data *data, int fd, int flag);
+int		store_no_so_path(int type, t_data *data, char *path);
+int		store_we_ea_path(int type, t_data *data, char *path);
+int		store_f_c_path(int type, t_data *data, char *path);
 void	extract_rgb(char **holder, int *r, int *g, int *b);
-int get_type(char *line);
-int	first_last_line(int x, t_data *data);
-int	door_validation(t_data *data, int i, int j, int	len_line);
-
-// void print_parsed_header(t_data *data);
-
+int 	get_type(char *line);
+int		first_last_line(int x, t_data *data);
+int		door_validation(t_data *data, int i, int j, int	len_line);
+int		map_closed_helper(int x, int y, t_data *data);
+int		check_surrounded(t_data *data, int x, int y);
+int		is_out_of_bounds(t_data *data, int x, int y);
+int		zero_next_to_space(t_data *data, int x, int y);
 
 ////////////////////////////libft////////////////////////////
 
-int				ft_atoi(const char *str);
-char			*ft_strchr(const char *s, int c);
-size_t			ft_strlen(const char *str);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
-int				ft_strcmp(char *s1, char *s2);
-char			*ft_strrchr(const char *s, int c);
-char			*substr(char *str, int *len, char c);
-char			*ft_strdup(char *s1);
-char			*ft_strjoin(char const *s1, char const *s2);
-char			**ft_split(const char *s, char c);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putnbr_fd(int n, int fd);
-void			ft_putstr_fd(char *s, int fd);
-void			  ft_bzero(void *s, size_t n);
-char			*ft_strtrim(char *s1, char *set);
-void			freemyhomie(char **str);
-int				ft_isalpha(int c);
-int				ft_isdigit(int c);
-int				ft_isalnum(int c);
-char			*ft_itoa(int n);
+int		ft_atoi(const char *str);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
+char	*ft_strrchr(const char *s, int c);
+char	*substr(char *str, int *len, char c);
+char	*ft_strdup(char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_split(const char *s, char c);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_bzero(void *s, size_t n);
+char	*ft_strtrim(char *s1, char *set);
+void	freemyhomie(char **str);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+char	*ft_itoa(int n);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
-
 int    start(t_data *data);
 int    start();
 

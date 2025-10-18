@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:11:05 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ int get_texture_pixel(char *addr, int x, int y, t_player *player);
 
 void draw_ceilling(double top, t_pixel* pixel, int x, t_player *player);
 void  draw_floor(double bottom, t_pixel *pixel, int x, t_player *player);
-int get_pixel_color(char *text_side, int text_x, int text_y, t_player *player);
 int get_text_x(t_player *player, double hit_point);
 int get_text_y(double tex_height, double text_pos, t_player *player);
 
@@ -180,6 +179,7 @@ int open_door(int keycode, void *param);
 void load_text_animation(t_player *player);
 void display_animation(t_player *player, int *counter);
 int	load_door(t_player *player);
+int get_pixel_color(char *text_side, int text_x, int text_y, t_player *player);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:54 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 18:06:34 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:40:16 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	valid_map(t_data *data)
 	if (player_der != 1)
 		return (1);
 	if (valid_dor(data) != 0)
-	{
-		printf("doooor\n");
 		return (1);
-	}
 	if (map_closed(data) != 0)
 		return (1);
 	return (0);
@@ -139,7 +136,6 @@ int	parsing_part(t_data *data, char *file_name)
 	}
 	if (valid_map(data) != 0)
 	{
-		printf("2\n");
 		print_error();
 		return (1);
 	}
