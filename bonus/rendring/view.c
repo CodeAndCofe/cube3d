@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:26:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 13:45:17 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 11:50:17 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	check_deistance(t_player *player, double h_distance, double v_distance)
 		player->hitx = player->h_wall_hit_x;
 		player->hity = player->h_wall_hit_y;
 		if (player->facing_up == 1)
-			player->wall_side = 0;//no
+			player->wall_side = 0;
 		else
-			player->wall_side = 1;//daha so
+			player->wall_side = 1;
 		player->hit_point = fmod(player->hitx, OBJECT) / OBJECT;
 		player->is_door = player->data->h_door;
 	}
@@ -34,9 +34,9 @@ void	check_deistance(t_player *player, double h_distance, double v_distance)
 		player->hity = player->v_wall_hit_y;
 		player->is_door = player->data->v_door;
 		if (player->facing_right == 1)
-			player->wall_side = 2;//ea
+			player->wall_side = 2;
 		else
-			player->wall_side = 3;//we
+			player->wall_side = 3;
 		player->hit_point = fmod(player->hity, OBJECT) / OBJECT;
 	}
 }

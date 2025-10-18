@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:02:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 13:39:44 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 10:41:58 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ int open_door(int keycode, void *param)
 {
 	double x_pos;
 	double y_pos;
-	double check_dis = 1.5;
-	t_player *player = (t_player *)param;
+	double check_dis;
 	double angle;
+	t_player *player = (t_player *)param;
 	
+	check_dis = 1.5;
 	angle = -0.5;
 	if (keycode == 49)
 	{

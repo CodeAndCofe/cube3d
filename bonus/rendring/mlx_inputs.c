@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 13:35:26 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 10:43:40 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	event_realise(int keycode, t_player *player)
 
 int    render(t_player *player)
 {
-	static int frame_counter = 0;
+	static int frame_counter;
 	if (player->pixel->img)
 		mlx_destroy_image(player->mlx->mlx, player->pixel->img);
 	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
