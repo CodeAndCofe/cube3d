@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 18:03:18 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 18:10:57 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,6 @@ int get_texture_pixel(char *addr, int x, int y, t_player *player);
 
 void draw_ceilling(double top, t_pixel* pixel, int x, t_player *player);
 void  draw_floor(double bottom, t_pixel *pixel, int x, t_player *player);
-int get_pixel_color(char *text_side, int text_x, int text_y, t_player *player);
 int get_text_x(t_player *player, double hit_point);
 int get_text_y(double tex_height, double text_pos, t_player *player);
 
