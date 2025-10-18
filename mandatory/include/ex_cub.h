@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/11 13:19:08 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void        set_zero(t_player *player);
 int	        action(t_player *player);
 int	        event_realise(int keycode, t_player *player);
 int	        event_listener(int keycode, t_player *player);
-void	    my_mlx_pixel_put(t_pixel *data, int x, int y, int color);
+void	    pixel_putter(t_pixel *data, int x, int y, int color);
 double      degree_to_radiant(double n);
 void		vertical_ray(t_player *player, t_pixel *pixel);
 void		the_intersects_vertical(double ray_angle, t_player *player);

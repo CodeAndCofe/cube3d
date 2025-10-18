@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_text.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/17 11:08:26 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:48:50 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ double	get_bottom(double wall_height)
 
 	bottom = (HEIGHT / 2) + (wall_height / 2);
 	if (bottom >= HEIGHT)
-		bottom = HEIGHT - 1;
+		bottom = HEIGHT;
 	return (bottom);
 }
 

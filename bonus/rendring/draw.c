@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:55:07 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 11:19:27 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_square_m(t_pixel *pixel, double x_pos, double y_pos, int color, int si
 		while (x < size)
 		{
 			if (((int) x_pos * size + x) < M_SIZE && ((int)y_pos * size + i) < M_SIZE)
-				my_mlx_pixel_put(pixel, (x_pos * size) + x, (y_pos * size) + i, color);
+				pixel_putter(pixel, (x_pos * size) + x, (y_pos * size) + i, color);
 			x++;
 		}
 		i++;
@@ -48,7 +48,7 @@ void	draw_player_on_minimap(t_pixel *pixel)
 		x = -size;
 		while (x <= size)
 		{
-			my_mlx_pixel_put(pixel, px + x, py + y, 0xFFFF00);
+			pixel_putter(pixel, px + x, py + y, 0xFFFF00);
 			x++;
 		}
 		y++;

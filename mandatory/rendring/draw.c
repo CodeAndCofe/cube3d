@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:55:07 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/10 16:57:41 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_player(t_pixel *pixel, t_player *player, int size)
 		{
 			player->p_pos_x = ((player->x) * OBJECT) + x;
 			player->p_pos_y = ((player->y) * OBJECT) + y;
-			my_mlx_pixel_put(pixel ,  player->p_pos_x,  player->p_pos_y, G_COLOR);
+			pixel_putter(pixel ,  player->p_pos_x,  player->p_pos_y, G_COLOR);
 			x++;
 		}
 		y++;

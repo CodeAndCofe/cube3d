@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 17:06:27 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/12 15:54:58 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int cordinate_limit(int x, int y, t_data *data)
     return (0);
 }
 
-void	my_mlx_pixel_put(t_pixel *data, int x, int y, int color)
+void	pixel_putter(t_pixel *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -51,7 +51,7 @@ void   draw_square(t_pixel *pixel, int i, int j, int color, int size)
         x = 1;
         while (x < size)
         {
-            my_mlx_pixel_put(pixel , (j * OBJECT) + x, (i * OBJECT) + y, color);
+            pixel_putter(pixel , (j * OBJECT) + x, (i * OBJECT) + y, color);
             x++;
         }
         y++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:05:59 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/11 11:23:03 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void draw_wall(double wall_height, int wall_side, t_pixel *pixel, int x, 
     {
         text_y = get_text_y(text_y, tex_pos, player);
         color = get_pixel_color(text_side, text_x, text_y, player);
-        my_mlx_pixel_put(pixel, x, i,color);
+        pixel_putter(pixel, x, i,color);
         tex_pos += tex_step;
         i++;
     }

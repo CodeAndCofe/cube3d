@@ -6,12 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:26:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 11:50:17 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
-
 
 void	check_deistance(t_player *player, double h_distance, double v_distance)
 {
@@ -69,7 +68,7 @@ void	draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color)
 		j = 0;
 		while (j < 2)
 		{
-			my_mlx_pixel_put(pixel, ray_x + j, ray_y + i, color);
+			pixel_putter(pixel, ray_x + j, ray_y + i, color);
 			j++;
 		}
 		i++;
@@ -96,9 +95,9 @@ void	player_view(t_pixel *pixel, t_player *player)
 
 	i = 0;
 	ray_angle = player->radiant - degree_to_radiant(VIEW / 2);
+	ray_angle = reset_radiant(ray_angle);
 	while (i < WIDTH)
 	{
-
 		draw_line(pixel, player, ray_angle, i);
 		ray_angle += degree_to_radiant(VIEW) / WIDTH;
 		i++;

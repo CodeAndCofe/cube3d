@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture_utils1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 13:32:50 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/17 10:12:42 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_ceilling(double top, t_pixel *pixel, int x, t_player *player)
 	i = 0;
 	while (i < (int)top)
 	{
-		my_mlx_pixel_put(pixel, x, i, player->data->c_color);
+		pixel_putter(pixel, x, i, player->data->c_color);
 		i++;
 	}
 }
@@ -56,7 +56,7 @@ void	draw_floor(double bottom, t_pixel *pixel, int x, t_player *player)
 	i = (int)bottom;
 	while (i < HEIGHT)
 	{
-		my_mlx_pixel_put(pixel, x, i, player->data->f_color);
+		pixel_putter(pixel, x, i, player->data->f_color);
 		i++;
 	}
 }

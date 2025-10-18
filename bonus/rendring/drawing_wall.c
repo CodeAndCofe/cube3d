@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 15:05:59 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 11:36:39 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	draw_wall_on_screen(t_wall *data, t_pixel *pixel, t_player *player)
 	{
 		data->text_y = get_text_y(data->tex_height, data->tex_pos, player);
 		data->color = get_pixel_color(data->text_side, data->text_x, data->text_y, player);
-		my_mlx_pixel_put(pixel, data->x, i,data->color);
+		pixel_putter(pixel, data->x, i,data->color);
 		data->tex_pos += data->tex_step;
 		i++;
 	}
@@ -65,7 +65,7 @@ void	drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle)
 	double	wall_hieght;
 
 	correct_distance = player->distance * cos(ray_angle - player->radiant);
-	projectplane_distnace = (WIDTH / 2) / tan(degree_to_radiant(VIEW / 2));
+	projectplane_distnace = (WIDTH / 2) / tan(degree_to_radiant(VIEW / 2));// prjoect plane
 	wall_hieght = ((double) OBJECT / correct_distance) * projectplane_distnace;
 	draw_wall(wall_hieght, player->wall_side, pixel, i, player);
 }
