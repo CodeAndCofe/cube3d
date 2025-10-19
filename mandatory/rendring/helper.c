@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 17:01:08 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 11:33:59 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 void	where_is_facing(double angle, t_player *player)
 {
@@ -77,7 +77,7 @@ void	vertical_ray(t_player *player)
 {
 	double		vertical_x;
 	double		vertical_y;
-	char cell;
+	char		cell;
 
 	vertical_x = player->v_interx;
 	vertical_y = player->v_intery;
@@ -100,4 +100,3 @@ void	vertical_ray(t_player *player)
 		vertical_y += player->v_ysteps;
 	} 
 }
-

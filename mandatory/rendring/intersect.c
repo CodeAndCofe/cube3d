@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:47:40 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 15:34:28 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 11:33:55 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 double	calculate_distance(double px, double py, double dx, double dy)
 {

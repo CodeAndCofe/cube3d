@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture_utils2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:21:17 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/17 10:51:58 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 10:50:17 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	load_texture(t_player *player)
 {
 	if (!player || !player->data || !player->mlx || !player->mlx->mlx)
 		return (1);
+	free_text(player);
 	if (load_texture_no(player) == 1)
 		return (1);
 	if (load_texture_so(player) == 1)

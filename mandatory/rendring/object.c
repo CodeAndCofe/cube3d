@@ -6,11 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 17:06:27 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 13:55:30 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 11:33:34 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 int the_limit(int x, int y)
 {

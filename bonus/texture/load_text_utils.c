@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_text_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:19:41 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 18:25:28 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 11:31:30 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "ex_cub.h"
+#include "ex_cub.h"
 
 // void	display_animation(t_player *player, int *counter)
 // {
@@ -30,15 +30,16 @@
 // 		*counter = 0;
 // 	}
 // 	mlx_put_image_to_window(player->mlx->mlx, player->mlx->win_mlx,
-// 		frames[player->data->cur_frame], pos_x, pos_y);
+// 		player->data->frames[player->data->cur_frame], pos_x, pos_y);
 // }
-// void	load_text_animation(t_player *player)
+
+// int	load_text_animation(t_player *player)
 // {
 // 	char	*frames[20];
 // 	int		i;
 
 // 	i = 0;
-// 	*frames[20] = {
+// 	frames[20] = {
 // 		"texture/frame1.xpm", "texture/frame2.xpm", "texture/frame3.xpm",
 // 		"texture/frame4.xpm", "texture/frame5.xpm", "texture/frame6.xpm",
 // 		"texture/frame7.xpm", "texture/frame8.xpm", "texture/frame9.xpm",
@@ -50,9 +51,12 @@
 // 	while (i < 20)
 // 	{
 // 		player->data->frames[i] = mlx_xpm_file_to_image(player->mlx->mlx,
-// 		frames[i], &player->data->frame_with, &player->data->frame_height);
+// 			frames[i], &player->data->frame_with, &player->data->frame_height);
+// 		if (!player->data->frames[i])
+// 			return (1);
 // 		i++;
 // 	}
 // 	player->data->frame_count = 20;
 // 	player->data->cur_frame = 0;
+// 	return (0);
 // }

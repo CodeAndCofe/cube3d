@@ -6,11 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:43:27 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/17 11:37:27 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 11:34:44 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 double  degree_to_radiant(double n)
 {
@@ -25,7 +25,7 @@ double	reset_radiant(double	angle)
 	return (angle);
 }
 
-void    set_zero(t_player   *player)
+void    set_zero(t_player *player)
 {
     player->facing_down = 0;
     player->facing_up = 0;
@@ -42,6 +42,7 @@ void    set_zero(t_player   *player)
     player->radiant = 0;
     player->h_wall_hit_x = 0;
     player->h_wall_hit_y = 0;
+	player->pixel->img = NULL;
 }
 
 void    set_player_position_and_degree(t_player *player, char c, int j, int i)

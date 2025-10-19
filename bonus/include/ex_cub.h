@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 18:11:05 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 10:59:43 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef	struct	s_mini
 
 typedef struct  s_player
 {
+	t_pixel	new_pixel;
 	t_data  *data;
 	t_mlx   *mlx;
 	t_pixel	*pixel;
@@ -101,8 +102,7 @@ typedef struct  s_player
 	int a;
 	int	left;
 	int	right;
-		int is_door;
-
+	int	is_door;
 	int	line_len;
 	int	bpp;
 }	t_player;
@@ -128,9 +128,10 @@ typedef struct  s_player
 #define 	OBJECT 24
 #define		WIDTH_PER_PIXEL 1.5
 #define		M_INT_MAX 2147483646;
+int 		free_text(t_player *player);
 void		pixels_free(t_pixel *pixels, t_mlx *mlx);
 void   		draw_square(t_pixel *pixel, int i, int j, int color, int size);
-int    		draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player);
+int    		draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player, t_pixel *new_pixel);
 int    		render(t_player *player);
 void		turn(t_player	*player, int rl);
 void		go_backward(t_player *player);
@@ -155,6 +156,7 @@ void		horizontal_ray(t_player *player);
 void		draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color);
 void		drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle);
 double		calculate_distance(double px, double py, double dx, double dy);
+void		exit_all(t_player *player);
 
 
 

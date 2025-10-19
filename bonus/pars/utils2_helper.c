@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   utils2_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:02:56 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/17 15:38:02 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 10:51:50 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
+
+void    init_text(t_data *data)
+{
+    // int i
+
+    // i = 0;
+    data->no_texture = NULL;
+    data->so_texture = NULL;
+    data->ea_texture = NULL;
+    data->we_texture = NULL;
+    data->door_texture = NULL;
+    // while (i < 20)
+    // {
+    //     data->frames[i] =  NULL;
+    //     i++;
+    // }
+}
 
 void	init_data(t_data *data)
 {
@@ -31,6 +48,7 @@ void	init_data(t_data *data)
 	data->found.found_ea = 0;
 	data->found.found_no = 0;
 	data->found.found_door = 0;
+	init_text(data);
 }
 
 void	extract_path(char *line, int *i, int *j)
