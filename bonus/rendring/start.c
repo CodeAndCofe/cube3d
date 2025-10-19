@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:38:14 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 14:03:43 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 17:24:20 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	start(t_data *data)
 	pixel.img = NULL;
 	player.pixel = &pixel;
 	player.new_pixel = &new_pixel;
+	printf("here\n");
 	set_zero(&player);
 	find_player_position(&player);
 	new_mlx.mlx = mlx_init();

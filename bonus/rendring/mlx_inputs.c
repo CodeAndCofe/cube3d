@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 17:07:45 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 17:25:44 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	free_text(t_player *player)
 	player->data->ea_texture = NULL;
 	player->data->so_texture = NULL;
 	player->data->no_texture = NULL;
-	while (i < 20)
+	while (i < 2)
 	{
 		if (player->data->frames[i++])
 			mlx_destroy_image(player->mlx->mlx, player->data->frames[i]);
@@ -95,6 +95,7 @@ int	render(t_player *player)
 {
 	static int	frame_counter;
 
+	printf("hero\n");
 	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
 	draw_map(player->pixel, player->mlx, player, player->new_pixel);
 	frame_counter++;
