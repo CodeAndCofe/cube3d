@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 11:22:58 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 17:05:57 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_data
 	char *door_path;
 
 	void	*frames[20];
-
+	int		frame_count;
 	int f_color;
 	int c_color;
 	int height;

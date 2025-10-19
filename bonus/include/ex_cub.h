@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 14:05:50 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 17:06:32 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ int			is_wall(t_data *data, double x, double y);
 
 ////////////texture funtction////////////////////////////////
 int load_texture(t_player *player);
+int	load_text_animation(t_player *player);
 void init_tex_side(char **tex_side, int wall_side, t_player *player);
 double get_top(double wall_height);
 double get_bottom(double wall_height);
@@ -190,7 +191,7 @@ int mouse_move(int x, int y, void *param);
 
 int	event(int keycode, t_player *player);
 int open_door(int keycode, void *param);
-void load_text_animation(t_player *player);
+// void load_text_animation(t_player *player);
 void display_animation(t_player *player, int *counter);
 int	load_door(t_player *player);
 int get_pixel_color(char *text_side, int text_x, int text_y, t_player *player);

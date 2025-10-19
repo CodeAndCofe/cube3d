@@ -6,27 +6,27 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:02:56 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 10:51:50 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 17:12:41 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ex_cub.h"
 
-void    init_text(t_data *data)
+void	init_text(t_data *data)
 {
-    // int i
+	int	i;
 
-    // i = 0;
-    data->no_texture = NULL;
-    data->so_texture = NULL;
-    data->ea_texture = NULL;
-    data->we_texture = NULL;
-    data->door_texture = NULL;
-    // while (i < 20)
-    // {
-    //     data->frames[i] =  NULL;
-    //     i++;
-    // }
+	i = 0;
+	data->no_texture = NULL;
+	data->so_texture = NULL;
+	data->ea_texture = NULL;
+	data->we_texture = NULL;
+	data->door_texture = NULL;
+	while (i < 20)
+	{
+		data->frames[i] = NULL;
+		i++;
+	}
 }
 
 void	init_data(t_data *data)
@@ -48,6 +48,7 @@ void	init_data(t_data *data)
 	data->found.found_ea = 0;
 	data->found.found_no = 0;
 	data->found.found_door = 0;
+	data->cur_frame = 0;
 	init_text(data);
 }
 
