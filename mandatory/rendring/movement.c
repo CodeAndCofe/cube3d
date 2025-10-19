@@ -6,38 +6,16 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:02:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 11:33:38 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:47:17 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ex_cub.h"
 
-int	is_wall(t_data *data, double x, double y)
-{
-	int map_x;
-	int map_y;
-
-	map_x = (int)x;
-	map_y = (int)y;
-	if (map_y < 0 || map_y >= data->map_lines)
-		return (1);
-	if (map_x < 0 || map_x >= (int)ft_strlen(data->maps[map_y]))
-		return (1);
-	if (data->maps[map_y][map_x] == '1')
-		return (1);
-	return (0);
-}
-
-int	event(int keycode, t_player *player)
-{
-	event_listener(keycode, player);
-	return (0);
-}
-
 void	go_forward(t_player *player)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = player->x + cos(player->radiant) * SPEED;
 	new_y = player->y + sin(player->radiant) * SPEED;
@@ -55,8 +33,8 @@ void	go_forward(t_player *player)
 
 void	go_backward(t_player *player)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
 	y = player->y;
 	x = player->x - cos(player->radiant) * SPEED;
@@ -83,13 +61,13 @@ void	turn(t_player	*player, int rl)
 
 void	left_right(t_player	*player, int rl)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
 	if (rl == 1)
 	{
-		x = player->x - cos(player->radiant + M_PI / 2)  * SPEED;
-		y = player->y - sin(player->radiant + M_PI / 2 )  * SPEED;
+		x = player->x - cos(player->radiant + M_PI / 2) * SPEED;
+		y = player->y - sin(player->radiant + M_PI / 2) * SPEED;
 	}
 	else
 	{

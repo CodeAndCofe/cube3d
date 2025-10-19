@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:47:40 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/18 15:34:28 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 14:05:39 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
+
+int	is_wall(t_data *data, double x, double y)
+{
+	int	map_x;
+	int	map_y;
+
+	map_x = (int)x;
+	map_y = (int)y;
+	if (map_y < 0 || map_y >= data->map_lines)
+		return (1);
+	if (map_x < 0 || map_x >= (int)ft_strlen(data->maps[map_y]))
+		return (1);
+	if (data->maps[map_y][map_x] == '1' || data->maps[map_y][map_x] == 'D')
+		return (1);
+	return (0);
+}
 
 double	calculate_distance(double px, double py, double dx, double dy)
 {

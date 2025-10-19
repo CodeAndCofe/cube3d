@@ -6,11 +6,27 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 11:33:59 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:17:17 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ex_cub.h"
+
+int	is_wall(t_data *data, double x, double y)
+{
+	int	map_x;
+	int	map_y;
+
+	map_x = (int)x;
+	map_y = (int)y;
+	if (map_y < 0 || map_y >= data->map_lines)
+		return (1);
+	if (map_x < 0 || map_x >= (int)ft_strlen(data->maps[map_y]))
+		return (1);
+	if (data->maps[map_y][map_x] == '1')
+		return (1);
+	return (0);
+}
 
 void	where_is_facing(double angle, t_player *player)
 {
@@ -49,7 +65,7 @@ void	horizontal_ray(t_player *player)
 {
 	double		horizontal_x;
 	double		horizontal_y;
-	char cell;
+	char		cell;
 
 	horizontal_x = player->h_interx;
 	horizontal_y = player->h_intery;
@@ -60,13 +76,14 @@ void	horizontal_ray(t_player *player)
 	{
 		if (checker(horizontal_x, horizontal_y, player) == 1)
 			return ;
-		cell = player->data->maps[(int)(horizontal_y / OBJECT)][(int)(horizontal_x / OBJECT)];
+		cell = player->data->maps[(int)(horizontal_y / OBJECT)]
+		[(int)(horizontal_x / OBJECT)];
 		if (cell == '1')
 		{
 			player->h_wall_hit_x = horizontal_x;
 			player->h_wall_hit_y = horizontal_y;
 			player->h_wall = 1;
-			break;
+			break ;
 		}
 		horizontal_x += player->h_xsteps;
 		horizontal_y += player->h_ysteps;
@@ -88,15 +105,16 @@ void	vertical_ray(t_player *player)
 	{
 		if (checker(vertical_x, vertical_y, player) == 1)
 			return ;
-		cell = player->data->maps[(int)(vertical_y / OBJECT)][(int)((vertical_x) / OBJECT)];
+		cell = player->data->maps[(int)(vertical_y / OBJECT)]
+		[(int)((vertical_x) / OBJECT)];
 		if (cell == '1')
 		{
 			player->v_wall_hit_x = vertical_x;
 			player->v_wall_hit_y = vertical_y;
 			player->v_wall = 1;
-			break;
+			break ;
 		}
 		vertical_x += player->v_xsteps;
 		vertical_y += player->v_ysteps;
-	} 
+	}
 }

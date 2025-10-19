@@ -6,11 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 11:28:25 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 13:48:37 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 int free_text(t_player *player)
 {
@@ -43,8 +43,8 @@ int free_text(t_player *player)
 
 void	exit_all(t_player *player)
 {
-	if (player->new_pixel.img)
-		mlx_destroy_image(player->mlx->mlx, player->new_pixel.img);
+	if (player->new_pixel->img)
+		mlx_destroy_image(player->mlx->mlx, player->new_pixel->img);
 	if (player->pixel->img)
 		mlx_destroy_image(player->mlx->mlx, player->pixel->img);
 	free_text(player);
@@ -93,13 +93,10 @@ int	event_realise(int keycode, t_player *player)
 
 int    render(t_player *player)
 {
-	t_pixel	new_pixel;
 	static int frame_counter;
 
-	new_pixel.img = NULL;
-	player->pixel->img = NULL;
 	mlx_clear_window(player->mlx->mlx, player->mlx->win_mlx);
-	draw_map(player->pixel, player->mlx, player, &new_pixel);
+	draw_map(player->pixel, player->mlx, player, player->new_pixel);
 	frame_counter++;
 	// display_animation(player, &frame_counter);
 	if (player->pixel->img)
@@ -107,10 +104,10 @@ int    render(t_player *player)
 		mlx_destroy_image(player->mlx->mlx, player->pixel->img);
 		player->pixel->img = NULL;
 	}
-	if (player->new_pixel.img)
+	if (player->new_pixel->img)
 	{
-		mlx_destroy_image(player->mlx->mlx, player->new_pixel.img);
-		player->new_pixel.img = NULL;
+		mlx_destroy_image(player->mlx->mlx, player->new_pixel->img);
+		player->new_pixel->img = NULL;
 	}
     action(player);
     return (0);

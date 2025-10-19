@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:26:12 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 11:33:15 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:05:04 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,19 @@ void	check_deistance(t_player *player, double h_distance, double v_distance)
 	}
 }
 
-void check_the_small_distance(t_player *player)
+void	check_the_small_distance(t_player *player)
 {
-	double h_distance;
-	double v_distance;
+	double	h_distance;
+	double	v_distance;
 
 	h_distance = M_INT_MAX;
 	v_distance = M_INT_MAX;
 	if (player->h_wall == 1)
-		h_distance = calculate_distance(player->x * OBJECT, player->y * OBJECT, player->h_wall_hit_x, player->h_wall_hit_y);
+		h_distance = calculate_distance(player->x * OBJECT,
+				player->y * OBJECT, player->h_wall_hit_x, player->h_wall_hit_y);
 	if (player->v_wall == 1)
-		v_distance = calculate_distance(player->x * OBJECT, player->y * OBJECT, player->v_wall_hit_x, player->v_wall_hit_y);
+		v_distance = calculate_distance(player->x * OBJECT,
+				player->y * OBJECT, player->v_wall_hit_x, player->v_wall_hit_y);
 	check_deistance(player, h_distance, v_distance);
 }
 
@@ -69,7 +71,7 @@ void	draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color)
 		}
 		i++;
 	}
-} 
+}
 
 void	draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 {
@@ -86,7 +88,7 @@ void	draw_line(t_pixel *pixel, t_player *player, double ray_angle, int i)
 
 void	player_view(t_pixel *pixel, t_player *player)
 {
-	int	i;
+	int		i;
 	double	ray_angle;
 
 	i = 0;

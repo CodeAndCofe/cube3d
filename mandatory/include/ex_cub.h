@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 11:26:12 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 13:05:18 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <mlx.h>
 # include <stdio.h>
 # include <math.h>
+
+typedef struct	s_wall_info
+{
+	double	height;
+	int		id;
+}t_wall_info;
 
 typedef struct s_pixel
 {
@@ -152,6 +158,7 @@ void	draw_ray(t_pixel *pixel, int ray_x, int ray_y, int color);
 void	drawing_wall(t_player *player, t_pixel *pixel, int i, double ray_angle);
 double	calculate_distance(double px, double py, double dx, double dy);
 void	exit_all(t_player *player);
+int		is_wall(t_data *data, double x, double y);
 
 ////////////texture funtction////////////////////////////////
 int		load_texture(t_player *player);

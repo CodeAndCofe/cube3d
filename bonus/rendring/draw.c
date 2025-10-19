@@ -6,25 +6,28 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:55:07 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 10:30:20 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 13:50:39 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
-void	draw_square_m(t_pixel *pixel, double x_pos, double y_pos, int color, int size)
+void	draw_square_m(t_pixel *pixel, double x_pos,
+		double y_pos, t_mini_data data)
 {
 	int	i;
 	int	x;
-	
+
 	i = 0;
-	while (i < size)
+	while (i < data.size)
 	{
 		x = 0;
-		while (x < size)
+		while (x < data.size)
 		{
-			if (((int) x_pos * size + x) < M_SIZE && ((int)y_pos * size + i) < M_SIZE)
-				pixel_putter(pixel, (x_pos * size) + x, (y_pos * size) + i, color);
+			if (((int) x_pos * data.size + x) < M_SIZE
+				&& ((int)y_pos * data.size + i) < M_SIZE)
+				pixel_putter(pixel, (x_pos * data.size) + x,
+					(y_pos * data.size) + i, data.color);
 			x++;
 		}
 		i++;
@@ -55,7 +58,26 @@ void	draw_player_on_minimap(t_pixel *pixel)
 	}
 }
 
-void draw_map_in_two_dimension(t_pixel *pixel, t_player *player)
+void	draw_in_mini_map(t_player *player, t_pixel *pixel, t_mini data)
+{
+	t_mini_data	info;
+
+	info.size = TILE_SIZE;
+	if (player->data->maps[data.map_y][data.map_x] == '1')
+	{
+		info.color = 0x444444;
+		draw_square_m(pixel, data.map_x - data.start_x,
+			data.map_y - data.start_y, info);
+	}
+	else
+	{
+		info.color = 0xAAAAAA;
+		draw_square_m(pixel, data.map_x - data.start_x,
+			data.map_y - data.start_y, info);
+	}
+}
+
+void	draw_map_in_two_dimension(t_pixel *pixel, t_player *player)
 {
 	t_mini	data;
 
@@ -72,35 +94,32 @@ void draw_map_in_two_dimension(t_pixel *pixel, t_player *player)
 			if (cordinate_limit(data.map_x, data.map_y, player->data))
 			{
 				data.map_x++;
-				continue;
+				continue ;
 			}
-			if (player->data->maps[data.map_y][data.map_x] == '1')
-				draw_square_m(pixel, data.map_x - data.start_x, data.map_y - data.start_y, 0x444444, TILE_SIZE);
-			else
-				draw_square_m(pixel, data.map_x - data.start_x, data.map_y - data.start_y, 0xAAAAAA, TILE_SIZE);
+			draw_in_mini_map(player, pixel, data);
 			data.map_x ++;
 		}
 		data.map_y++;
 	}
 }
 
-int draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player, t_pixel *new_pixel)
+int	draw_map(t_pixel *pixel, t_mlx *new_mlx,
+	t_player *player, t_pixel *new_pixel)
 {
-	if (new_pixel->img)
-	{
-		mlx_destroy_image(new_mlx->mlx, new_pixel->img);
-		mlx_clear_window(new_mlx->mlx, new_mlx->win_mlx);
-		new_pixel->img = NULL;
-	}
+	free_text(player);
 	new_pixel->img = mlx_new_image(new_mlx->mlx, M_SIZE, M_SIZE);
-	new_pixel->addr = mlx_get_data_addr(new_pixel->img, &new_pixel->bits_per_pixel, &new_pixel->line_length, &new_pixel->endian);
+	new_pixel->addr = mlx_get_data_addr(new_pixel->img,
+			&new_pixel->bits_per_pixel,
+			&new_pixel->line_length, &new_pixel->endian);
 	pixel->img = mlx_new_image(new_mlx->mlx, WIDTH, HEIGHT);
-	pixel->addr = mlx_get_data_addr(pixel->img, &pixel->bits_per_pixel, &pixel->line_length, &pixel->endian);
-    load_texture(player);
+	pixel->addr = mlx_get_data_addr(pixel->img, &pixel->bits_per_pixel,
+			&pixel->line_length, &pixel->endian);
+	load_texture(player);
 	player_view(pixel, player);
 	draw_map_in_two_dimension(new_pixel, player);
 	draw_player_on_minimap(new_pixel);
 	mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, pixel->img, 0, 0);
-	mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx, new_pixel->img, 0, 0);
+	mlx_put_image_to_window(new_mlx->mlx,
+		new_mlx->win_mlx, new_pixel->img, 0, 0);
 	return (1);
 }
