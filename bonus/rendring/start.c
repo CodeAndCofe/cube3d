@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:38:14 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 17:24:20 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:49:57 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	destroy(t_player *player)
 {
-	exit_all(player);
+	exit_all(player, 0);
 	return (0);
 }
 
@@ -39,7 +39,6 @@ int	start(t_data *data)
 	pixel.img = NULL;
 	player.pixel = &pixel;
 	player.new_pixel = &new_pixel;
-	printf("here\n");
 	set_zero(&player);
 	find_player_position(&player);
 	new_mlx.mlx = mlx_init();
@@ -48,6 +47,6 @@ int	start(t_data *data)
 	draw_map(&pixel, &new_mlx, &player, &new_pixel);
 	mlx_action(&player);
 	mlx_loop(new_mlx.mlx);
-	exit_all(&player);
+	exit_all(&player, 0);
 	return (0);
 }

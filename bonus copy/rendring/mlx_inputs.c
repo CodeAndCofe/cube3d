@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:44:42 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 12:44:16 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:31:12 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,16 @@ int	free_text(t_player *player)
 	return (0);
 }
 
-void	exit_all(t_player *player)
+void	exit_all(t_player *player, int f)
 {
+	if (f == 1)
+		print_error();
 	if (player->pixel->img)
 		mlx_destroy_image(player->mlx->mlx, player->pixel->img);
 	free_text(player);
 	mlx_destroy_window(player->mlx->mlx, player->mlx->win_mlx);
 	free_data(player->data);
-	exit(0);
+	exit(f);
 }
 
 int	event_listener(int keycode, t_player *player)
@@ -54,7 +56,7 @@ int	event_listener(int keycode, t_player *player)
 	else if (keycode == 124)
 		player->right = 1;
 	else if (keycode == 53)
-		exit_all(player);
+		exit_all(player, 0);
 	return (0);
 }
 

@@ -6,35 +6,16 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 17:02:01 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 14:05:22 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:20:35 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ex_cub.h"
 
-int	event(int keycode, t_player *player)
-{
-	event_listener(keycode, player);
-	return (0);
-}
-
-int	mouse_move(int x, int y, void *param)
-{
-	t_player *player = (t_player *)param;
-	(void)y;
-	double degree;
-
-	degree = ((x * 360) / (WIDTH));
-	player->radiant = degree_to_radiant((degree));
-	player->radiant = reset_radiant(player->radiant);
-
-	return (0);
-}
-
 void	go_forward(t_player *player)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = player->x + cos(player->radiant) * SPEED;
 	new_y = player->y + sin(player->radiant) * SPEED;
@@ -52,8 +33,8 @@ void	go_forward(t_player *player)
 
 void	go_backward(t_player *player)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
 	y = player->y;
 	x = player->x - cos(player->radiant) * SPEED;
@@ -80,13 +61,13 @@ void	turn(t_player	*player, int rl)
 
 void	left_right(t_player	*player, int rl)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
 
 	if (rl == 1)
 	{
-		x = player->x - cos(player->radiant + M_PI / 2)  * SPEED;
-		y = player->y - sin(player->radiant + M_PI / 2 )  * SPEED;
+		x = player->x - cos(player->radiant + M_PI / 2) * SPEED;
+		y = player->y - sin(player->radiant + M_PI / 2) * SPEED;
 	}
 	else
 	{
@@ -119,40 +100,5 @@ int	action(t_player *player)
 		left_right(player, 1);
 	if (player->d == 1)
 		left_right(player, 0);
-	return (0);
-}
-
-int	open_door(int keycode, void *param)
-{
-	double		x_pos;
-	double		y_pos;
-	double		check_dis;
-	double		angle;
-	t_player	*player = (t_player *)param;
-	
-	check_dis = 1.5;
-	angle = -0.5;
-	if (keycode == 49)
-	{
-		while (angle <= 0.5)
-		{	
-			x_pos = player->x + cos(player->radiant + angle) * check_dis;
-			y_pos = player->y + sin(player->radiant + angle) * check_dis;
-			if ((int)player->x == (int)x_pos && (int)player->y == (int)y_pos)
-			{
-				angle += 0.1;
-				continue;
-			} 
-			if (((int)x_pos >= 0 && x_pos < (int)ft_strlen(player->data->maps[(int)y_pos])) && 
-				((int)y_pos >= 0 && y_pos < player->data->map_lines))
-			{
-				if (player->data->maps[(int)y_pos][(int)x_pos] == 'D')//
-					player->data->maps[(int)y_pos][(int)x_pos] = 'd';//	
-				else if (player->data->maps[(int)y_pos][(int)x_pos] == 'd')//
-					player->data->maps[(int)y_pos][(int)x_pos] = 'D';//
-			}
-			angle += 0.1;
-		}
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:21:17 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 17:11:50 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 18:29:35 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ int	load_texture(t_player *player)
 		return (1);
 	load_door(player);
 	if (load_text_animation(player) == 1)
-	{
-		printf("fail\n");
-	}
+		exit_all(player, 1);
 	return (0);
 }
