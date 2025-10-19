@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:43:59 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/17 11:00:14 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:28:35 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,5 @@ char	*get_next_line(int fd)
 	line = extract_append(&append);
 	if (!line)
 		return (free(line), NULL);
-    // printf("=====>%s\n", line);
-	
 	return (line);
 }

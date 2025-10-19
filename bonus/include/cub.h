@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 17:05:57 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/19 21:04:16 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ typedef struct s_found
 
 }   t_found;
 
+
+typedef struct s_color
+{
+	int		i;
+	int		r;
+	int		g;
+	int		b;
+}t_color;
+
+
+
 typedef struct s_data
 {
 	char **maps;
@@ -57,7 +68,7 @@ typedef struct s_data
 	char *ea_path;
 	char *door_path;
 
-	void	*frames[20];
+	void	*frames[4];
 	int		frame_count;
 	int f_color;
 	int c_color;
@@ -150,6 +161,7 @@ int		map_closed_helper(int x, int y, t_data *data);
 int		check_surrounded(t_data *data, int x, int y);
 int		is_out_of_bounds(t_data *data, int x, int y);
 int		zero_next_to_space(t_data *data, int x, int y);
+int count_comma(char *line);
 
 ////////////////////////////libft////////////////////////////
 

@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:03 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 18:08:08 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:58:51 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	store_data(int type, t_data *data, char *path)
 {
 	if (!data || !path)
 		return (1);
+	printf("path : %s\n", path);
 	if (store_no_so_path(type, data, path) == 1)
 		return (1);
 	else if (store_we_ea_path(type, data, path) == 1)
@@ -88,4 +89,22 @@ void	remove_newline(char *line)
 		i++;
 	if (i > 0 && line[i - 1] == '\n')
 		line[i - 1] = '\0';
+}
+
+int count_comma(char *line)
+{
+	int i;
+	int counter;
+
+	i = 0;
+	counter = 0;
+	while (line[i])
+	{
+		if (line[i] == ',')
+			counter++;
+		i++;
+	}
+	if (counter != 2)
+		return (1);
+	return (0);
 }

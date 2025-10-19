@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:54 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/18 11:40:16 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:14:11 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,21 @@ int	pars_map(char *line, t_data *data)
 int	pars_line(char *line, t_data *data)
 {
 	char	*path;
+	char	*temp;
 	int		type;
 
 	if (!line || !data)
 		return (1);
 	if (pars_line_helper(line, &type, &path, data) != 0)
 		return (1);
+	printf("line ; %s\n", line);
+	temp = path;
+	path = ft_strtrim(path, " ");
+	free(temp);
 	if ((type >= 2 && type <= 5) || type == 9)
 	{
-		if (is_valid_extension((remove_space(path)), ".xpm") != 0)
+		if (is_valid_extension(path, ".xpm") != 0)
+		// if (is_valid_extension((path), ".xpm") != 0)
 		{
 			printf("invalid xpm file extension\n");
 			free(path);

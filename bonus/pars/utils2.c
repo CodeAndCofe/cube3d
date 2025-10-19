@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:12 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/17 17:20:23 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/19 20:28:48 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,28 +95,27 @@ int	valid_file(t_data *data)
 int	convert_to_rgb(char *color)
 {
 	char	**holder;
-	int		i;
-	int		r;
-	int		g;
-	int		b;
+	t_color rgb;
 
-	(1) && (i = -1, holder = ft_split(color, ','));
+	(1) && (rgb.i = -1, holder = ft_split(color, ','));
 	if (!holder)
 		return (1);
+	if (count_comma(color) == 1)
+		return (-1);
 	if (count_word(holder) != 3 || valid_space(holder) == 1)
 	{
 		free_holder(holder);
 		return (-1);
 	}
-	while (++i < 3)
-		remove_space(holder[i]);
+	while (++rgb.i < 3)
+		remove_space(holder[rgb.i]);
 	if (check_num(holder[0]) || check_num(holder[1]) || check_num(holder[2]))
 	{
 		free_holder(holder);
 		return (-1);
 	}
-	extract_rgb(holder, &r, &g, &b);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+	extract_rgb(holder, &rgb.r, &rgb.g, &rgb.b);
+	if (rgb.r < 0 || rgb.r > 255 || rgb.g < 0 || rgb.g > 255 || rgb.b < 0 || rgb.b > 255)
 		return (-1);
-	return ((r << 16) | (g << 8) | b);
+	return ((rgb.r << 16) | (rgb.g << 8) | rgb.b);
 }
