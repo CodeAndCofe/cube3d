@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:12 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 20:28:48 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 10:40:08 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	pars_line_helper(char *line, int *type, char **path, t_data *data)
 			return (1);
 	}
 	*path = ft_strdup(&line[j]);
+	printf("path = %s\n", *path);
 	if (!*path)
 		return (1);
 	return (0);
@@ -78,6 +79,7 @@ void	free_holder(char **holder)
 	while (holder[i])
 	{
 		free(holder[i]);
+		holder[i] = NULL;
 		i++;
 	}
 	free(holder);
@@ -114,6 +116,7 @@ int	convert_to_rgb(char *color)
 		free_holder(holder);
 		return (-1);
 	}
+	// free_holder(holder);
 	extract_rgb(holder, &rgb.r, &rgb.g, &rgb.b);
 	if (rgb.r < 0 || rgb.r > 255 || rgb.g < 0 || rgb.g > 255 || rgb.b < 0 || rgb.b > 255)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 17:57:14 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 10:54:05 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,14 @@ void *ft_calloc(size_t count, size_t size)
     ft_bzero(ptr, total_size);
     return (ptr);
 }
-
+void f(void)
+{
+    system("leaks cub3d");
+}
 int main(int ac, char **av)
 {
     t_data *data;
+    atexit(f);
 
     if (ac != 2)
         return (print_error());
@@ -56,9 +60,11 @@ int main(int ac, char **av)
         return (print_error());
     if (parsing_part(data, av[1]) == 1)
     {
+        free_data(data);
         return (1);//hna khasni nzid free data
     }
     // print_parsed_header(data);
     start(data);
+    free_data(data);
     return (0);
 }

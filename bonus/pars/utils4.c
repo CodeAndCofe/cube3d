@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 17:52:31 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 08:02:36 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 10:23:00 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	free_data(t_data *data)
 		}
 		free(data->maps);
 	}
-	free(data->no_path);
-	free(data->so_path);
-	free(data->ea_path);
-	free(data->we_path);
+		free(data->no_path);
+		free(data->so_path);
+		free(data->ea_path);
+		free(data->we_path);
 	free(data);
 }
 

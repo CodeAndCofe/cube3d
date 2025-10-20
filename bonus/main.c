@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 08:02:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 10:54:02 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,15 @@ void *ft_calloc(size_t count, size_t size)
     ft_bzero(ptr, total_size);
     return (ptr);
 }
-
-void g()
+void f(void)
 {
-	system("leaks cub3d");
+    system("leaks cub3d");
 }
 int main(int ac, char **av)
 {
+    atexit(f);
     t_data *data;
 
-	atexit(g);
     if (ac != 2)
         return (print_error());
     data = ft_calloc(1, sizeof(t_data));
@@ -61,9 +60,11 @@ int main(int ac, char **av)
         return (print_error());
     if (parsing_part(data, av[1]) == 1)
     {
+        free_data(data);
         return (1);//hna khasni nzid free data
     }
     // print_parsed_header(data);
     start(data);
+    free_data(data);
     return (0);
 }
