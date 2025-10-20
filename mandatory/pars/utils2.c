@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:12 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 20:26:09 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 08:35:37 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	valid_file(t_data *data)
 int	convert_to_rgb(char *color)
 {
 	char	**holder;
-	t_color rgb;
+	t_color	rgb;
 
 	(1) && (rgb.i = -1, holder = ft_split(color, ','));
 	if (!holder)
@@ -115,7 +115,8 @@ int	convert_to_rgb(char *color)
 		return (-1);
 	}
 	extract_rgb(holder, &rgb.r, &rgb.g, &rgb.b);
-	if (rgb.r < 0 || rgb.r > 255 || rgb.g < 0 || rgb.g > 255 || rgb.b < 0 || rgb.b > 255)
+	if (rgb.r < 0 || rgb.r > 255 || rgb.g < 0
+		|| rgb.g > 255 || rgb.b < 0 || rgb.b > 255)
 		return (-1);
 	return ((rgb.r << 16) | (rgb.g << 8) | rgb.b);
 }

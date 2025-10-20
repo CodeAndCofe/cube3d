@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/16 17:57:14 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 08:02:28 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ void *ft_calloc(size_t count, size_t size)
     return (ptr);
 }
 
+void g()
+{
+	system("leaks cub3d");
+}
 int main(int ac, char **av)
 {
     t_data *data;
 
+	atexit(g);
     if (ac != 2)
         return (print_error());
     data = ft_calloc(1, sizeof(t_data));
