@@ -6,13 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:15:24 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:15:45 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ex_cub.h"
-
-
+#include "../../include/ex_cub.h"
 
 void	init_tex_side(char **tex_side, int wall_side, t_player *player)
 {
@@ -50,6 +48,7 @@ int	get_texture_pixel(char *addr, int x, int y, t_player *player)
 {
 	int	offset;
 
-	offset = (y * player->data->tex_line_len) + (x * (player->data->tex_bpp / 8));
+	offset = (y * player->data->tex_line_len)
+		+ (x * (player->data->tex_bpp / 8));
 	return (*(int *)(addr + offset));
 }

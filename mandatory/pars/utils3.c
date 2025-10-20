@@ -6,11 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:15:24 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:20:17 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ex_cub.h"
+#include "../../include/ex_cub.h"
 
 int	check_surrounded(t_data *data, int x, int y)
 {
@@ -87,7 +87,7 @@ int	map_closed(t_data *data)
 			return (1);
 		while (data->maps[x][y])
 		{
-			if(map_closed_helper(x, y, data) == 1)
+			if (map_closed_helper(x, y, data) == 1)
 				return (1);
 			y++;
 		}

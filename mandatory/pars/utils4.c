@@ -6,11 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 17:52:31 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:15:43 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:20:33 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#include "../../include/cub.h"
 
 void	free_data(t_data *data)
 {
@@ -62,7 +62,7 @@ int	init_map(t_data *data)
 	return (0);
 }
 
-int map_closed_helper(int x, int y, t_data *data)
+int	map_closed_helper(int x, int y, t_data *data)
 {
 	if (first_last_line(x, data) == 1)
 		return (1);
@@ -70,8 +70,6 @@ int map_closed_helper(int x, int y, t_data *data)
 		|| (is_out_of_bounds(data, x, y) == 1)
 		|| (zero_next_to_space(data, x, y) == 1))
 		if (data->maps[x][y] == '0')
-		{
 			return (1);
-		}
 	return (0);
 }

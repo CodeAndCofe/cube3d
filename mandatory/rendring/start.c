@@ -6,11 +6,11 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:38:14 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 18:30:34 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ex_cub.h"
+#include "../../include/ex_cub.h"
 
 int	destroy(t_player *player)
 {
