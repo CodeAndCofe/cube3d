@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture_utils1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 13:32:50 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/18 17:38:05 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:15:24 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 int	get_text_y(double tex_height, double text_pos, t_player *player)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   load_text.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/18 17:36:46 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:15:24 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 
 

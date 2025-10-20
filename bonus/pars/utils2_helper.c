@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils2_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 12:02:56 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 11:05:31 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:15:24 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 void	init_text(t_data *data)
 {

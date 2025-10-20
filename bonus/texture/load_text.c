@@ -6,16 +6,16 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:01:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 18:11:33 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:15:24 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ex_cub.h"
+#include "../include/ex_cub.h"
 
 int	load_door(t_player *player)
 {
 	player->data->door_texture = mlx_xpm_file_to_image(player->mlx->mlx,
-			"texture/door.xpm",
+			"textures/door.xpm",
 			&player->data->door_tex_width, &player->data->door_tex_height);
 	player->data->door_address = mlx_get_data_addr(player->data->door_texture,
 			&player->data->door_tex_bpp, &player->data->door_tex_line_len,

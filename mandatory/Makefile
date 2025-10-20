@@ -2,54 +2,53 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -Iinclude #-fsanitize=address -g3
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit -lm
 SRCS2 = \
-	rendring/start.c\
-	rendring/draw.c\
-	rendring/object.c\
-	rendring/player.c\
-	rendring/view.c\
-	rendring/mlx_inputs.c\
-	rendring/movement.c\
-	rendring/helper.c\
-	rendring/drawing_wall.c\
-	texture/load_text.c\
-	texture/load_texture_utils1.c\
-	texture/load_texture_utils2.c\
-	rendring/intersect.c
+	mandatory/rendring/start.c\
+	mandatory/rendring/draw.c\
+	mandatory/rendring/object.c\
+	mandatory/rendring/player.c\
+	mandatory/rendring/view.c\
+	mandatory/rendring/mlx_inputs.c\
+	mandatory/rendring/movement.c\
+	mandatory/rendring/helper.c\
+	mandatory/rendring/drawing_wall.c\
+	mandatory/texture/load_text.c\
+	mandatory/texture/load_texture_utils1.c\
+	mandatory/texture/load_texture_utils2.c\
+	mandatory/rendring/intersect.c
 
 SRCS = \
-	main.c \
-	pars/parsing.c \
-	pars/parsing_helper.c \
-	pars/utils1.c \
-	pars/utils2.c \
-	pars/utils2_helper.c \
-	pars/utils3.c \
-	pars/utils4.c \
-	pars/utils5.c \
-	Libft/ft_atoi.c \
-	Libft/ft_alpha.c \
-	Libft/ft_lstadd_back.c \
-	Libft/ft_lstclear.c \
-	Libft/ft_lstdelone.c \
-	Libft/ft_lstiter.c \
-	Libft/ft_lstlast.c \
-	Libft/ft_lstnew.c \
-	Libft/ft_lstsize.c \
-	Libft/ft_putchar_fd.c \
-	Libft/ft_putnbr_fd.c \
-	Libft/ft_putstr_fd.c \
-	Libft/ft_split.c \
-	Libft/ft_strchr.c \
-	Libft/ft_strdup.c \
-	Libft/ft_strjoin.c \
-	Libft/ft_strlen.c \
-	Libft/ft_strncmp.c \
-	Libft/ft_strrchr.c \
-	Libft/ft_substr.c\
-	next_line/get_next_line.c \
-	next_line/get_next_line_utils.c \
+	mandatory/main.c \
+	mandatory/pars/parsing.c \
+	mandatory/pars/parsing_helper.c \
+	mandatory/pars/utils1.c \
+	mandatory/pars/utils2.c \
+	mandatory/pars/utils2_helper.c \
+	mandatory/pars/utils3.c \
+	mandatory/pars/utils4.c \
+	mandatory/pars/utils5.c \
+	mandatory/Libft/ft_atoi.c \
+	mandatory/Libft/ft_alpha.c \
+	mandatory/Libft/ft_lstadd_back.c \
+	mandatory/Libft/ft_lstclear.c \
+	mandatory/Libft/ft_lstdelone.c \
+	mandatory/Libft/ft_lstiter.c \
+	mandatory/Libft/ft_lstlast.c \
+	mandatory/Libft/ft_lstnew.c \
+	mandatory/Libft/ft_lstsize.c \
+	mandatory/Libft/ft_putchar_fd.c \
+	mandatory/Libft/ft_putnbr_fd.c \
+	mandatory/Libft/ft_putstr_fd.c \
+	mandatory/Libft/ft_split.c \
+	mandatory/Libft/ft_strchr.c \
+	mandatory/Libft/ft_strdup.c \
+	mandatory/Libft/ft_strjoin.c \
+	mandatory/Libft/ft_strlen.c \
+	mandatory/Libft/ft_strncmp.c \
+	mandatory/Libft/ft_strrchr.c \
+	mandatory/Libft/ft_substr.c\
+	mandatory/next_line/get_next_line.c \
+	mandatory/next_line/get_next_line_utils.c \
 	$(SRCS2)
-
 
 
 OBJS = $(SRCS:.c=.o)

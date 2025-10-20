@@ -2,54 +2,54 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -Iinclude #-fsanitize=address -g3
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit -lm
 SRCS2 = \
-	rendring/start.c\
-	rendring/draw.c\
-	rendring/object.c\
-	rendring/player.c\
-	rendring/view.c\
-	rendring/mlx_inputs.c\
-	rendring/movement.c\
-	rendring/helper.c\
-	rendring/drawing_wall.c\
-	texture/load_text.c\
-	texture/load_texture_utils1.c\
-	texture/load_texture_utils2.c\
-	texture/load_text_utils.c\
-	rendring/intersect.c\
-	rendring/bonus_events.c
+	bonus/rendring/start.c\
+	bonus/rendring/draw.c\
+	bonus/rendring/object.c\
+	bonus/rendring/player.c\
+	bonus/rendring/view.c\
+	bonus/rendring/mlx_inputs.c\
+	bonus/rendring/movement.c\
+	bonus/rendring/helper.c\
+	bonus/rendring/drawing_wall.c\
+	bonus/texture/load_text.c\
+	bonus/texture/load_texture_utils1.c\
+	bonus/texture/load_texture_utils2.c\
+	bonus/texture/load_text_utils.c\
+	bonus/rendring/intersect.c\
+	bonus/rendring/bonus_events.c
 
 SRCS = \
-	main.c \
-	pars/parsing.c \
-	pars/parsing_helper.c \
-	pars/utils1.c \
-	pars/utils2.c \
-	pars/utils2_helper.c \
-	pars/utils3.c \
-	pars/utils4.c \
-	pars/utils5.c \
-	Libft/ft_atoi.c \
-	Libft/ft_alpha.c \
-	Libft/ft_lstadd_back.c \
-	Libft/ft_lstclear.c \
-	Libft/ft_lstdelone.c \
-	Libft/ft_lstiter.c \
-	Libft/ft_lstlast.c \
-	Libft/ft_lstnew.c \
-	Libft/ft_lstsize.c \
-	Libft/ft_putchar_fd.c \
-	Libft/ft_putnbr_fd.c \
-	Libft/ft_putstr_fd.c \
-	Libft/ft_split.c \
-	Libft/ft_strchr.c \
-	Libft/ft_strdup.c \
-	Libft/ft_strjoin.c \
-	Libft/ft_strlen.c \
-	Libft/ft_strncmp.c \
-	Libft/ft_strrchr.c \
-	Libft/ft_substr.c\
-	next_line/get_next_line.c \
-	next_line/get_next_line_utils.c \
+	bonus/main.c \
+	bonus/pars/parsing.c \
+	bonus/pars/parsing_helper.c \
+	bonus/pars/utils1.c \
+	bonus/pars/utils2.c \
+	bonus/pars/utils2_helper.c \
+	bonus/pars/utils3.c \
+	bonus/pars/utils4.c \
+	bonus/pars/utils5.c \
+	bonus/Libft/ft_atoi.c \
+	bonus/Libft/ft_alpha.c \
+	bonus/Libft/ft_lstadd_back.c \
+	bonus/Libft/ft_lstclear.c \
+	bonus/Libft/ft_lstdelone.c \
+	bonus/Libft/ft_lstiter.c \
+	bonus/Libft/ft_lstlast.c \
+	bonus/Libft/ft_lstnew.c \
+	bonus/Libft/ft_lstsize.c \
+	bonus/Libft/ft_putchar_fd.c \
+	bonus/Libft/ft_putnbr_fd.c \
+	bonus/Libft/ft_putstr_fd.c \
+	bonus/Libft/ft_split.c \
+	bonus/Libft/ft_strchr.c \
+	bonus/Libft/ft_strdup.c \
+	bonus/Libft/ft_strjoin.c \
+	bonus/Libft/ft_strlen.c \
+	bonus/Libft/ft_strncmp.c \
+	bonus/Libft/ft_strrchr.c \
+	bonus/Libft/ft_substr.c\
+	bonus/next_line/get_next_line.c \
+	bonus/next_line/get_next_line_utils.c \
 	$(SRCS2)
 
 

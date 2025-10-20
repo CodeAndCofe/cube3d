@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:19:41 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 18:51:29 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:12:57 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	load_text_animation(t_player *player)
 	char	frames[3][50];
 
 	i = 0;
-	ft_strcpy1(frames[0], "texture/frame1.xpm");
-	ft_strcpy1(frames[1], "texture/frame2.xpm");
-	ft_strcpy1(frames[2], "texture/frame3.xpm");
+	ft_strcpy1(frames[0], "textures/frame1.xpm");
+	ft_strcpy1(frames[1], "textures/frame2.xpm");
+	ft_strcpy1(frames[2], "textures/frame3.xpm");
 	while (i < 3)
 	{
 		player->data->frames[i] = mlx_xpm_file_to_image(player->mlx->mlx,
