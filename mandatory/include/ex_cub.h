@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 18:29:40 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:34:48 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <stdio.h>
 # include <math.h>
 
-typedef struct	s_wall_info
+typedef struct s_wall_info
 {
 	double	height;
 	int		id;
-}t_wall_info;
+}	t_wall_info;
 
 typedef struct s_pixel
 {
@@ -131,7 +131,6 @@ typedef struct s_player
 # define M_INT_MAX 2147483646
 
 void	pixels_free(t_pixel *pixels, t_mlx *mlx);
-void	draw_square(t_pixel *pixel, int i, int j, int color, int size);
 int		draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player);
 int		render(t_player *player);
 void	turn(t_player	*player, int rl);

@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 11:00:48 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/19 20:25:36 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:38:16 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
-
 
 static int	ft_checker(char s, const char *set)
 {
@@ -76,4 +75,3 @@ char	*ft_strtrim(char *s1, char *set)
 		tab[i++] = s1[start++];
 	return (tab[i] = '\0', tab);
 }
-

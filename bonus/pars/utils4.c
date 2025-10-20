@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 17:52:31 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 10:23:00 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:06:35 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	free_data(t_data *data)
 		}
 		free(data->maps);
 	}
-		free(data->no_path);
-		free(data->so_path);
-		free(data->ea_path);
-		free(data->we_path);
+	free(data->no_path);
+	free(data->so_path);
+	free(data->ea_path);
+	free(data->we_path);
 	free(data);
 }
 
@@ -87,7 +87,7 @@ int	valid_dor(t_data *data)
 	return (0);
 }
 
-int map_closed_helper(int x, int y, t_data *data)
+int	map_closed_helper(int x, int y, t_data *data)
 {
 	if (first_last_line(x, data) == 1)
 		return (1);
@@ -95,8 +95,6 @@ int map_closed_helper(int x, int y, t_data *data)
 		|| (is_out_of_bounds(data, x, y) == 1)
 		|| (zero_next_to_space(data, x, y) == 1))
 		if (data->maps[x][y] == '0')
-		{
 			return (1);
-		}
 	return (0);
 }

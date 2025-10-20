@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_events.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/19 18:20:42 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:11:19 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ int	mouse_move(int x, int y, void *param)
 	return (0);
 }
 
+static void	open_door_helper(double x_pos, double y_pos, t_player *player)
+{
+	if (((int)x_pos >= 0
+			&& x_pos < (int)ft_strlen(player->data->maps[(int)y_pos]))
+		&& ((int)y_pos >= 0 && y_pos < player->data->map_lines))
+	{
+		if (player->data->maps[(int)y_pos][(int)x_pos] == 'D')
+			player->data->maps[(int)y_pos][(int)x_pos] = 'd';
+		else if (player->data->maps[(int)y_pos][(int)x_pos] == 'd')
+			player->data->maps[(int)y_pos][(int)x_pos] = 'D';
+	}
+}
+
 int	open_door(int keycode, void *param)
 {
 	double		x_pos;
@@ -53,18 +66,9 @@ int	open_door(int keycode, void *param)
 				angle += 0.1;
 				continue ;
 			}
-			if (((int)x_pos >= 0 && x_pos < (int)ft_strlen(player->data->maps
-						[(int)y_pos])) && ((int)y_pos >= 0
-					&& y_pos < player->data->map_lines))
-			{
-				if (player->data->maps[(int)y_pos][(int)x_pos] == 'D')
-					player->data->maps[(int)y_pos][(int)x_pos] = 'd';
-				else if (player->data->maps[(int)y_pos][(int)x_pos] == 'd')
-					player->data->maps[(int)y_pos][(int)x_pos] = 'D';
-			}
+			open_door_helper(x_pos, y_pos, player);
 			angle += 0.1;
 		}
 	}
 	return (0);
 }
-

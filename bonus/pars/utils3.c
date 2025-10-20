@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/18 18:05:44 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:06:11 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	map_closed(t_data *data)
 			return (1);
 		while (data->maps[x][y])
 		{
-			if(map_closed_helper(x, y, data) == 1)
+			if (map_closed_helper(x, y, data) == 1)
 				return (1);
 			y++;
 		}
