@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 17:52:31 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/21 15:42:16 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/21 16:05:50 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,3 +78,10 @@ int	map_closed_helper(int x, int y, t_data *data)
 	}
 	return (0);
 }
+
+
+
+
+
+
+

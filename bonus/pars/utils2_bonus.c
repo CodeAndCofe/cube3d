@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:12 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/21 15:35:37 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:55:57 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,13 @@ int	pars_line_helper(char *line, int *type, char **path, t_data *data)
 	if (*type != 8)
 	{
 		while (line[j] == ' ' || line[j] == '\t')
-			if (line[++j] == '\0')
+		{
+			j++;
+			if (line[j] == '\0')
+			{
 				return (1);
+			}
+		}
 	}
 	*path = ft_strdup(&line[j]);
 	if (!*path)

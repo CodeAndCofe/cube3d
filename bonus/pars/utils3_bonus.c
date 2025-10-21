@@ -6,7 +6,7 @@
 /*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/21 15:41:36 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/21 16:08:51 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ int	map_closed(t_data *data)
 		if (data->maps[x][0] != '1' && data->maps[x][0] != ' ')
 			return (1);
 		if (data->maps[x][ft_strlen(data->maps[x]) - 1] != '1'
-			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != ' ')
-			return (1);
+			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != ' '
+			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != '\t')
+			{
+				return (1);
+			}
 		while (data->maps[x][y])
 		{
 			if (map_closed_helper(x, y, data) == 1)
@@ -77,7 +80,8 @@ int	valid_chars(char *line, int *player, int flag)
 		if ((line[i] != '0') && (line[i] != '1')
 			&& (line[i] != ' ') && (line[i] != 'N')
 			&& (line[i] != 'S') && (line[i] != 'E')
-			&& (line[i] != 'W') && line[i] != 'D')
+			&& (line[i] != 'W') && line[i] != 'D'
+			&& line[i] != '\t')
 			return (1);
 		if (flag == 1)
 		{
