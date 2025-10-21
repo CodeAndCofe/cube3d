@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/21 16:08:51 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/21 18:11:24 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ int	map_closed(t_data *data)
 		if (data->maps[x][ft_strlen(data->maps[x]) - 1] != '1'
 			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != ' '
 			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != '\t')
-			{
-				return (1);
-			}
+			return (1);
 		while (data->maps[x][y])
 		{
 			if (map_closed_helper(x, y, data) == 1)

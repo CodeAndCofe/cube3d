@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_events.c                                     :+:      :+:    :+:   */
+/*   bonus_events_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/21 19:29:28 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,8 @@ int	open_door(int keycode, void *param)
 		{
 			x_pos = player->x + cos(player->radiant + angle) * check_dis;
 			y_pos = player->y + sin(player->radiant + angle) * check_dis;
-			if ((int)player->x == (int)x_pos && (int)player->y == (int)y_pos)
-			{
-				angle += 0.1;
-				continue ;
-			}
 			open_door_helper(x_pos, y_pos, player);
-			angle += 0.1;
+			angle += 0.5;
 		}
 	}
 	return (0);
