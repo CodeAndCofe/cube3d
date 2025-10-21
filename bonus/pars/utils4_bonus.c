@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils4.c                                           :+:      :+:    :+:   */
+/*   utils4_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 17:52:31 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:41:24 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,12 @@ int	map_closed_helper(int x, int y, t_data *data)
 	if ((check_surrounded(data, x, y) == 1)
 		|| (is_out_of_bounds(data, x, y) == 1)
 		|| (zero_next_to_space(data, x, y) == 1))
+	{
 		if (data->maps[x][y] == '0')
 			return (1);
+		if (data->maps[x][y] == 'N' || data->maps[x][y] == 'E'
+			|| data->maps[x][y] == 'S' || data->maps[x][y] == 'W')
+			return (1);
+	}
 	return (0);
 }

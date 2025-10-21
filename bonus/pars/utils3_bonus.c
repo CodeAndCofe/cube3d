@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   utils3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:14 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:41:36 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,30 @@ int	zero_next_to_space(t_data *data, int x, int y)
 	return (0);
 }
 
+int	map_closed(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (data->maps[++x])
+	{
+		y = 0;
+		if (data->maps[x][0] != '1' && data->maps[x][0] != ' ')
+			return (1);
+		if (data->maps[x][ft_strlen(data->maps[x]) - 1] != '1'
+			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != ' ')
+			return (1);
+		while (data->maps[x][y])
+		{
+			if (map_closed_helper(x, y, data) == 1)
+				return (1);
+			y++;
+		}
+	}
+	return (0);
+}
+
 int	valid_chars(char *line, int *player, int flag)
 {
 	int	i;
@@ -66,30 +90,6 @@ int	valid_chars(char *line, int *player, int flag)
 			if (line[i] == 'N' || line[i] == 'S'
 				|| line[i] == 'E' || line[i] == 'W')
 				return (1);
-		}
-	}
-	return (0);
-}
-
-int	map_closed(t_data *data)
-{
-	int	x;
-	int	y;
-
-	x = -1;
-	while (data->maps[++x])
-	{
-		y = 0;
-		if (data->maps[x][0] != '1' && data->maps[x][0] != ' ')
-			return (1);
-		if (data->maps[x][ft_strlen(data->maps[x]) - 1] != '1'
-			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != ' ')
-			return (1);
-		while (data->maps[x][y])
-		{
-			if (map_closed_helper(x, y, data) == 1)
-				return (1);
-			y++;
 		}
 	}
 	return (0);

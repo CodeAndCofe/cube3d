@@ -77,6 +77,7 @@ B_SRCS = \
 	bonus/pars/utils3_bonus.c \
 	bonus/pars/utils4_bonus.c \
 	bonus/pars/utils5_bonus.c \
+	bonus/pars/utils6_bonus.c \
 	bonus/Libft/ft_atoi_bonus.c \
 	bonus/Libft/ft_alpha_bonus.c \
 	bonus/Libft/ft_lstadd_back_bonus.c \

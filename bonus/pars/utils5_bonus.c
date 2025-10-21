@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils5.c                                           :+:      :+:    :+:   */
+/*   utils5_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 12:11:31 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/21 15:39:18 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	door_validation(t_data *data, int i, int j, int len_line)
 	if (i == 0 || i == data->map_lines - 1)
 		return (1);
 	if (j == 0 || j == len_line - 1)
+		return (1);
+	if (door_next_space(data, i, j) == 1)
 		return (1);
 	if (data->maps[i][j - 1] == '1'
 		&& data->maps[i][j + 1] == '1')
