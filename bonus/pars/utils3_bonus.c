@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 17:02:32 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/21 18:11:24 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/22 12:04:13 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	map_closed(t_data *data)
 	while (data->maps[++x])
 	{
 		y = 0;
-		if (data->maps[x][0] != '1' && data->maps[x][0] != ' ')
+		if (data->maps[x][0] != '1' && data->maps[x][0] != ' '
+			&& data->maps[x][0] != '\t')
 			return (1);
 		if (data->maps[x][ft_strlen(data->maps[x]) - 1] != '1'
 			&& data->maps[x][ft_strlen(data->maps[x]) - 1] != ' '
