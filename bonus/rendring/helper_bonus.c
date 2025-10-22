@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   helper_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:46:35 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/22 18:03:55 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ void	check_cell(t_player *player, char cell, int f)
 		player->data->v_door = 0;
 }
 
-int	checker(int x, int y, t_player *player)
+int	checker(double x, double y, t_player *player)
 {
-	if (the_limit(x, y) == 1)
-		return (1);
 	if (cordinate_limit(x / OBJECT, y / OBJECT, player->data))
 		return (1);
 	return (0);

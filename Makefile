@@ -105,8 +105,8 @@ B_SRCS = \
 
 B_OBJS = $(B_SRCS:.c=.o)
 OBJS = $(SRCS:.c=.o)
-NAME = cub3d
-NAME_BONUS = cub3d_bonus
+NAME = cub3D
+NAME_BONUS = cub3D_bonus
 HEADER = include/cub.h
 HEADER2 = include/ex_cub.h
 
