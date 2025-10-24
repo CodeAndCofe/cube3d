@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_text_utils.c                                  :+:      :+:    :+:   */
+/*   load_text_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:19:41 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/24 16:58:24 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,27 @@ void	display_animation(t_player *player, int *counter)
 	int	pos_x;
 	int	pos_y;
 
+	if (!player->data->start_animation)
+		return ;
 	pos_x = WIDTH / 2;
 	pos_y = HEIGHT - player->data->frame_height + 15;
 	if (!player->data->frames[player->data->cur_frame])
 		return ;
-	(*counter)++;
-	if (*counter >= 1)
-	{
-		player->data->cur_frame = (player->data->cur_frame + 1)
-			% player->data->frame_count;
-		*counter = 0;
-	}
 	mlx_put_image_to_window(player->mlx->mlx,
 		player->mlx->win_mlx,
 		player->data->frames[player->data->cur_frame],
 		pos_x,
 		pos_y);
+	(*counter)++;
+	if (*counter >= 10)
+	{
+		player->data->cur_frame++;
+		if (player->data->cur_frame >= player->data->frame_count)
+		{
+			player->data->cur_frame = 0;
+			player->data->start_animation = 0;
+		}
+		*counter = 0;
+	}
 }
+

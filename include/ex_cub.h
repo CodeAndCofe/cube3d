@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex_cub.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:38:24 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/22 15:39:18 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/24 16:57:56 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,5 +182,6 @@ int		load_door(t_player *player);
 int		get_pixel_color(char *text_side, int text_x,
 			int text_y, t_player *player);
 int		door_next_space(t_data *data, int x, int y);
+int		animation_click(int button, int x, int y, t_player *player)
 
 #endif

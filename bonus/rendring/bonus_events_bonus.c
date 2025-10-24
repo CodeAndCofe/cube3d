@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_events_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/21 19:29:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/24 17:00:00 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,15 @@ static void	open_door_helper(double x_pos, double y_pos, t_player *player)
 		else if (player->data->maps[(int)y_pos][(int)x_pos] == 'd')
 			player->data->maps[(int)y_pos][(int)x_pos] = 'D';
 	}
+}
+
+int animation_click(int button, int x, int y, t_player *player)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		player->data->start_animation = 1;
+	return (0);
 }
 
 int	open_door(int keycode, void *param)
