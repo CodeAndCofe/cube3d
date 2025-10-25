@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 10:59:57 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 14:16:26 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:33:37 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-int	print_error(void)
+int	print_error(void) 
 {
 	ft_putstr_fd("Error\n", 2);
 	return (1);
