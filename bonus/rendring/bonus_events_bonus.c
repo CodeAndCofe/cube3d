@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_events_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/25 20:01:05 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:50:59 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	mouse_move(int x, int y, void *param)
 	t_player	*player;
 	double		degree;
 
-	(void) y;
 	if (x <= 0 || x >= WIDTH - 1)
+		return (0);
+	if (y <= 0 || y >= HEIGHT - 1)
 		return (0);
 	player = (t_player *) param;
 	degree = ((x * 360) / (WIDTH));
