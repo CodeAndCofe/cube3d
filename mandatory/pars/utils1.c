@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 12:18:03 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 14:19:32 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:30:19 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	is_valid_extension(char *path, char *extension)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (1);
+	close(fd);
 	len = ft_strlen(path);
 	if (ft_strncmp(&path[len - 4], extension, 4) != 0)
 		return (1);
-	close(fd);
 	return (0);
 }
 
