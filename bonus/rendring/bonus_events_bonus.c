@@ -6,7 +6,7 @@
 /*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/21 19:29:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/25 22:19:36 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	mouse_move(int x, int y, void *param)
 	t_player	*player;
 	double		degree;
 
-	(void) y;
 	player = (t_player *) param;
 	degree = ((x * 360) / (WIDTH));
 	player->radiant = degree_to_radiant((degree));
