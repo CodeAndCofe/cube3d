@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start.c                                            :+:      :+:    :+:   */
+/*   start_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:38:14 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/20 13:48:28 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/24 16:55:25 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	mlx_action(t_player *player)
 	mlx_hook(player->mlx->win_mlx, 3, 1L << 1, event_realise, player);
 	mlx_hook(player->mlx->win_mlx, 6, 1L << 6, mouse_move, player);
 	mlx_hook(player->mlx->win_mlx, 17, 0L, destroy, player);
+	mlx_hook(player->mlx->win_mlx, 4, 1L << 2, animation_click, player);
 	mlx_loop_hook(player->mlx->mlx, render, player);
 }
 

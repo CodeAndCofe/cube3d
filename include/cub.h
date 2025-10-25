@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:39:00 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/20 14:06:39 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/24 16:12:33 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_data
 	int		frame_with;
 	int		frame_height;
 	int		counter;
+	int start_animation;
 
 }	t_data;
 

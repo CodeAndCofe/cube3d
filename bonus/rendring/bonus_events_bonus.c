@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_events_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/25 22:19:36 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:50:59 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	mouse_move(int x, int y, void *param)
 	t_player	*player;
 	double		degree;
 
+	if (x <= 0 || x >= WIDTH - 1)
+		return (0);
+	if (y <= 0 || y >= HEIGHT - 1)
+		return (0);
 	player = (t_player *) param;
 	degree = ((x * 360) / (WIDTH));
 	player->radiant = degree_to_radiant((degree));
@@ -41,6 +45,15 @@ static void	open_door_helper(double x_pos, double y_pos, t_player *player)
 		else if (player->data->maps[(int)y_pos][(int)x_pos] == 'd')
 			player->data->maps[(int)y_pos][(int)x_pos] = 'D';
 	}
+}
+
+int	animation_click(int button, int x, int y, t_player *player)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		player->data->start_animation = 1;
+	return (0);
 }
 
 int	open_door(int keycode, void *param)

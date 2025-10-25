@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_texture_utils2.c                              :+:      :+:    :+:   */
+/*   load_texture_utils2_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 10:21:17 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/20 13:44:01 by aferryat         ###   ########.fr       */
+/*   Updated: 2025/10/24 17:02:42 by zyahansa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	load_texture(t_player *player)
 		return (1);
 	if (load_texture_ea(player) == 1)
 		return (1);
-	load_door(player);
+	if (load_door(player) == 1)
+		return (1);
 	if (load_text_animation(player) == 1)
 		exit_all(player, 1);
 	return (0);
