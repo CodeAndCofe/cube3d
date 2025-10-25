@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_events_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 18:17:33 by aferryat          #+#    #+#             */
-/*   Updated: 2025/10/24 17:00:00 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:01:05 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	mouse_move(int x, int y, void *param)
 	double		degree;
 
 	(void) y;
+	if (x <= 0 || x >= WIDTH - 1)
+		return (0);
 	player = (t_player *) param;
 	degree = ((x * 360) / (WIDTH));
 	player->radiant = degree_to_radiant((degree));
@@ -44,7 +46,7 @@ static void	open_door_helper(double x_pos, double y_pos, t_player *player)
 	}
 }
 
-int animation_click(int button, int x, int y, t_player *player)
+int	animation_click(int button, int x, int y, t_player *player)
 {
 	(void)x;
 	(void)y;

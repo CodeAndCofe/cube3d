@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_text_utils_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zyahansa <zyahansa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aferryat <aferryat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:19:41 by zyahansa          #+#    #+#             */
-/*   Updated: 2025/10/24 16:58:24 by zyahansa         ###   ########.fr       */
+/*   Updated: 2025/10/25 20:04:32 by aferryat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ void	display_animation(t_player *player, int *counter)
 		*counter = 0;
 	}
 }
-
