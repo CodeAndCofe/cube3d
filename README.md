@@ -1,5 +1,71 @@
 # Cub3D
 
+## Build
+
+The project now builds the mandatory and bonus features as one `cub3D`
+executable using MLX42. Build MLX42 first, then run `make` from the project
+root. If MLX42 is not in `./MLX42`, set both paths explicitly:
+
+```sh
+git clone https://github.com/codam-coding-college/MLX42.git MLX42
+cmake -S MLX42 -B MLX42/build
+cmake --build MLX42/build -j4
+make
+```
+
+For a library stored elsewhere:
+
+```sh
+make MLX42_DIR=/path/to/MLX42 \
+	MLX42_LIB=/path/to/MLX42/build/libmlx42.a
+```
+
+The existing `.xpm` assets are loaded by the project and converted into MLX42
+textures at runtime.
+
+## Gameplay
+
+The game starts without a map argument and progresses through `level1.cub`,
+`level2.cub`, and `level3.cub`. Each level is larger and contains more coin
+placements and a stronger goblin. All coins in a level must be collected before
+the next level opens. The health HUD is vertical on the right side. From level
+two onward a slower mage throws a damaging fireball every five seconds.
+Goblin pursuit requires line of sight; after losing sight it searches only near
+the last seen position and otherwise wanders.
+
+Controls: `WASD` or arrow keys move and turn, `SPACE` opens doors and fires the
+fireball after the attack is unlocked, `ESC` exits. Every three collected coins
+grant two player fireballs. The player fireball takes three, four, or five hits
+to defeat the goblin depending on the level.
+
+## Provided Assets
+
+The supplied files were detected as `coin.png` PNG, `firball.png` PNG,
+`image-removebg-preview.png` PNG, `sky.jpg` grayscale JPEG, and `wall.avif`
+AVIF. They are converted once to PNG files in `textures/` so MLX42 can load
+them directly. `image-removebg-preview.png` is used as the goblin asset, and a
+purple-tinted `textures/mage.png` is generated because no mage source image
+was provided.
+
+## Docker
+
+Build and run on Linux with X11:
+
+```sh
+docker build -t cub3d .
+xhost +local:docker
+docker run --rm -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix cub3d
+```
+
+On macOS, install and run XQuartz, enable network clients, set `DISPLAY` to the
+host address, and use the same Docker command. On Windows, use WSL2 with an
+X11 server and set `DISPLAY` to the X11 server address before running Docker.
+
+The visual review kept full-resolution wall raycasting, added sprite depth
+occlusion, persistent MLX42 images, and HUD overlays without placeholder game
+textures.
+
 ## Introduction
 
 Cub3D is a 3D game developed in C at 1337 Coding School, part of the 42 Network. The project uses raycasting to transform a 2D map into a 3D first-person view.
@@ -70,23 +136,8 @@ Once the player's position and direction are initialized, I set up the graphics 
 
 ### Drawing the Map
 
-```c
-int	draw_map(t_pixel *pixel, t_mlx *new_mlx, t_player *player)
-{
-	pixel->img = mlx_new_image(new_mlx->mlx, WIDTH, HEIGHT);
-	pixel->addr = mlx_get_data_addr(pixel->img, &pixel->bits_per_pixel,
-		&pixel->line_length, &pixel->endian);
-	load_texture(player);
-	player_view(pixel, player);
-	mlx_put_image_to_window(new_mlx->mlx, new_mlx->win_mlx,
-		pixel->img, 0, 0);
-	return (1);
-}
-```
-
-This function creates a new image using `mlx_new_image()`. I think of it as a large sheet of paper on which I can draw individual pixels.
-
-I obtain access to the image's pixel data, load the textures, render the player's view, and display the resulting image in the window using `mlx_put_image_to_window()`.
+The renderer creates an MLX42 image with `mlx_new_image()`, writes pixels with
+`mlx_put_pixel()`, and displays the image with `mlx_image_to_window()`.
 
 ### Casting Rays Across the Field of View
 
