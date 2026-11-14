@@ -1,28 +1,5 @@
 # Cub3D
 
-## Build
-
-The project now builds the mandatory and bonus features as one `cub3D`
-executable using MLX42. Build MLX42 first, then run `make` from the project
-root. If MLX42 is not in `./MLX42`, set both paths explicitly:
-
-```sh
-git clone https://github.com/codam-coding-college/MLX42.git MLX42
-cmake -S MLX42 -B MLX42/build
-cmake --build MLX42/build -j4
-make
-```
-
-For a library stored elsewhere:
-
-```sh
-make MLX42_DIR=/path/to/MLX42 \
-	MLX42_LIB=/path/to/MLX42/build/libmlx42.a
-```
-
-The existing `.xpm` assets are loaded by the project and converted into MLX42
-textures at runtime.
-
 ## Gameplay
 
 The game starts without a map argument and progresses through `level1.cub`,
