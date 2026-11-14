@@ -49,13 +49,23 @@ was provided.
 
 ## Docker
 
-Build and run on Linux with X11:
+Build and run the complete game inside Docker with one command on Linux/X11:
 
 ```sh
-docker build -t cub3d .
-xhost +local:docker
-docker run --rm -e DISPLAY=$DISPLAY \
-  -v /tmp/.X11-unix:/tmp/.X11-unix cub3d
+make docker-run
+```
+
+The target builds the root `Dockerfile`, compiles MLX42 and the game from the
+`game/` directory inside the image, grants temporary X11 access, runs the
+container, and revokes access when the game exits. To only build the image use
+`make docker-build`; to remove it use `make docker-clean`.
+
+The native game build is separate:
+
+```sh
+cd game
+make
+./cub3D
 ```
 
 On macOS, install and run XQuartz, enable network clients, set `DISPLAY` to the

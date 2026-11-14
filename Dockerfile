@@ -14,12 +14,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	ca-certificates \
 	&& rm -rf /var/lib/apt/lists/*
 
-WORKDIR /cub3d
-COPY . .
+WORKDIR /cub3d/game
+COPY game .
 
-RUN git clone --depth 1 https://github.com/codam-coding-college/MLX42.git MLX42 \
+RUN rm -rf MLX42 \
+	&& git clone --depth 1 https://github.com/codam-coding-college/MLX42.git MLX42 \
 	&& cmake -S MLX42 -B MLX42/build \
 	&& cmake --build MLX42/build -j"$(nproc)" \
-	&& make
+	&& make fclean \
+	&& make CFLAGS='-Wall -Wextra -Werror -Wno-unused-result -Wno-unused-value -O2 -Iinclude -IMLX42/include'
 
-CMD ["./cub3D", "maps/map_bonus.cub"]
+CMD ["./cub3D"]
